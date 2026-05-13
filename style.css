@@ -43,6 +43,18 @@
     border-bottom:3px solid var(--ink);
     margin-bottom:32px;
   }
+
+  .image-container{
+    position:relative;
+    width:100%;
+    height:auto;
+  }
+
+.image-container img{
+  width:100%;
+  aspect-ratio: 3:2;
+}
+
   .eyebrow{
     font-family:"JetBrains Mono",monospace;
     font-size:10.5px;
