@@ -44,15 +44,17 @@
     margin-bottom:32px;
   }
 
-  .image-container{
-    position:relative;
-    width:100%;
-    height:auto;
-  }
+  .img-box{
+  width: 300px;      /* whatever size you want the container */
+  height: 300px;
+  overflow: hidden;  /* this is what crops the excess */
+}
 
-.image-container img{
-  width:100%;
-  aspect-ratio: 3:2;
+.img-box img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills the box, keeps aspect ratio, crops the rest */
+  display: block;
 }
 
   .eyebrow{
