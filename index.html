@@ -7,7 +7,834 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<style>
+  :root{
+    --paper:#f5f0e4;
+    --frame:#ffffff;
+    --ink:#0a0a0a;
+    --ink-2:#2a2a2a;
+    --ink-3:#6b6b6b;
+    --pop-pink:#ff1d6e;
+    --pop-yellow:#f0e500;
+    --pop-yellow-2:#fff45c;
+    --pop-cyan:#00d4ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--frame);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  body{
+    min-height:100vh;
+    padding:48px 24px;
+  }
+  .page{
+    max-width:900px;
+    margin:0 auto;
+    position:relative;
+  }
+  @media (max-width:680px){
+    body{padding:24px 16px}
+  }
+
+  .road-stripe{
+    height:6px;
+    background:repeating-linear-gradient(90deg,
+      var(--ink) 0 20px,
+      transparent 20px 32px,
+      var(--ink) 32px 52px,
+      transparent 52px 64px);
+    margin-bottom:24px;
+  }
+
+  header{
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:end;
+    gap:24px;
+    padding-bottom:28px;
+    border-bottom:3px solid var(--ink);
+    margin-bottom:32px;
+  }
+  .eyebrow{
+    font-family:"JetBrains Mono",monospace;
+    font-size:10.5px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--ink);
+    background:var(--pop-yellow);
+    display:inline-block;
+    padding:4px 10px;
+    margin-bottom:18px;
+    font-weight:700;
+    border:1.5px solid var(--ink);
+  }
+  .name-row{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}
+  .header-btns{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    align-self:end;
+    justify-self:end;
+  }
+  .header-btns .story-btn{margin-bottom:0;text-align:center;min-width:180px}
+  @media (max-width:680px){
+    .header-btns{flex-direction:row;flex-wrap:wrap;align-self:start;margin-top:14px}
+    .header-btns .story-btn{min-width:0}
+  }
+  .story-btn{
+    background:var(--pop-pink);
+    color:var(--paper);
+    padding:8px 14px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:10.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    text-decoration:none;
+    border:2px solid var(--ink);
+    box-shadow:3px 3px 0 var(--ink);
+    margin-bottom:10px;
+    white-space:nowrap;
+    transition:all .12s;
+  }
+  .story-btn:hover{
+    background:var(--pop-yellow);
+    color:var(--ink);
+    transform:translate(-1px,-1px);
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  .story-btn .arrow{display:inline-block;margin-left:4px;transition:transform .12s}
+  .story-btn:hover .arrow{transform:translateX(3px)}
+  h1{
+    font-family:"Fraunces",serif;
+    font-weight:500;
+    font-size:clamp(44px, 7vw, 76px);
+    line-height:0.92;
+    letter-spacing:-0.025em;
+    font-variation-settings:"opsz" 144,"SOFT" 20;
+  }
+  h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--pop-pink);
+    position:relative;
+    display:inline-block;
+  }
+  h1 em::after{
+    content:"";
+    position:absolute;
+    left:0;right:0;bottom:6px;
+    height:6px;
+    background:var(--pop-yellow);
+    z-index:-1;
+  }
+  .tagline{
+    font-family:"Fraunces",serif;
+    font-style:italic;
+    font-size:19px;
+    color:var(--ink-2);
+    margin-top:14px;
+    letter-spacing:-0.005em;
+  }
+  .tagline span{
+    background:var(--ink);
+    color:var(--pop-yellow);
+    padding:1px 8px 2px;
+    font-style:normal;
+    font-family:"Instrument Sans",sans-serif;
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    margin:0 2px;
+  }
+
+  .bib{
+    background:var(--ink);
+    color:var(--paper);
+    padding:14px 18px;
+    text-align:center;
+    border:3px solid var(--ink);
+    transform:rotate(-2deg);
+    box-shadow:6px 6px 0 var(--pop-pink);
+    font-family:"JetBrains Mono",monospace;
+  }
+  .bib-label{font-size:9px;letter-spacing:0.18em;color:var(--pop-yellow);margin-bottom:2px;font-weight:700}
+  .bib-num{font-family:"Fraunces",serif;font-size:34px;font-weight:600;line-height:1;letter-spacing:-0.02em;color:var(--paper)}
+  .bib-sub{font-size:9px;color:var(--paper);margin-top:4px;letter-spacing:0.08em}
+
+  .contact{
+    grid-column:1/-1;
+    margin-top:20px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 18px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;
+    color:var(--ink-2);
+    font-weight:500;
+    align-items:center;
+  }
+  .contact a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--pop-pink);padding-bottom:1px;transition:all .15s}
+  .contact a:hover{background:var(--pop-yellow)}
+  .contact a.mini-btn{
+    border:1.5px solid var(--ink);
+    border-bottom:1.5px solid var(--ink);
+    background:var(--pop-yellow);
+    padding:2px 8px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-size:10px;
+  }
+  .contact a.mini-btn:hover{background:var(--pop-pink);color:var(--paper)}
+  .contact .dot{color:var(--pop-pink);font-weight:700}
+
+  .grid{display:grid;grid-template-columns:1fr 2fr;gap:40px}
+  @media (max-width:680px){
+    body{padding:24px 14px}
+    .grid{grid-template-columns:1fr;gap:28px}
+    header{grid-template-columns:1fr}
+    .bib{justify-self:start}
+  }
+
+  section{margin-bottom:30px}
+  .sec-title{
+    font-family:"JetBrains Mono",monospace;
+    font-size:10.5px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:14px;
+    padding-bottom:6px;
+    border-bottom:2px solid var(--ink);
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    font-weight:700;
+  }
+  .sec-title .num{
+    color:var(--paper);
+    background:var(--pop-pink);
+    padding:1px 7px;
+    font-weight:700;
+    letter-spacing:0.1em;
+  }
+
+  .summary{
+    font-family:"Fraunces",serif;
+    font-size:20px;
+    line-height:1.45;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+    padding:18px 22px;
+    margin-bottom:34px;
+    background:var(--pop-yellow);
+    border:2.5px solid var(--ink);
+    box-shadow:8px 8px 0 var(--pop-pink);
+  }
+
+  .entry{margin-bottom:20px}
+  .entry:last-child{margin-bottom:0}
+  .entry-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:4px}
+  .entry-title{font-family:"Fraunces",serif;font-size:17px;font-weight:500;letter-spacing:-0.01em;color:var(--ink)}
+  .entry-meta{
+    font-family:"JetBrains Mono",monospace;
+    font-size:10.5px;
+    color:var(--ink);
+    white-space:nowrap;
+    background:var(--pop-yellow-2);
+    padding:2px 7px;
+    border:1px solid var(--ink);
+    font-weight:600;
+  }
+  .entry-sub{font-size:13px;color:var(--ink-3);font-style:italic;margin-bottom:6px}
+  .entry ul{list-style:none;margin-top:6px}
+  .entry li{font-size:13.5px;color:var(--ink-2);padding-left:18px;position:relative;margin-bottom:4px}
+  .entry li::before{content:"→";position:absolute;left:0;top:0;color:var(--pop-pink);font-weight:700}
+
+  .empty{
+    display:block;
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;
+    color:var(--ink-3);
+    background:repeating-linear-gradient(45deg, transparent 0 6px, rgba(0,0,0,0.04) 6px 7px);
+    border:1.5px dashed var(--pop-pink);
+    padding:6px 10px;
+    margin:5px 0;
+  }
+  .empty::before{content:"▸ todo · ";color:var(--pop-pink);font-weight:700}
+  .empty-inline{border:none;background:none;padding:0;display:inline-block}
+  .empty-inline::before{content:"todo · ";color:var(--pop-pink);font-weight:700;font-family:"JetBrains Mono",monospace;font-size:11px}
+
+  .quick-fact{margin-bottom:14px}
+  .quick-fact-label{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px;font-weight:600}
+  .quick-fact-val{font-size:13.5px;color:var(--ink);font-weight:500}
+  .quick-fact-val .accent-pink{color:var(--pop-pink);font-weight:700}
+  .quick-fact-val small{color:var(--ink-3);font-size:12px;font-weight:400;display:block;margin-top:1px}
+
+  .skill-group{margin-bottom:14px}
+  .skill-group-label{font-family:"Fraunces",serif;font-style:italic;font-size:15px;color:var(--pop-pink);margin-bottom:4px;font-weight:500}
+  .skill-group-list{font-size:13px;color:var(--ink-2);line-height:1.55}
+
+  .stats-strip{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border:2.5px solid var(--ink);
+    margin-bottom:16px;
+    background:var(--ink);
+    gap:2px;
+    box-shadow:5px 5px 0 var(--pop-pink);
+  }
+  .stat{background:var(--paper);padding:12px 6px;text-align:center}
+  .stat:nth-child(odd){background:var(--pop-yellow)}
+  .stat-num{font-family:"Fraunces",serif;font-size:30px;font-weight:600;color:var(--ink);line-height:1;font-variation-settings:"opsz" 144}
+  .stat-num.q{font-size:18px;color:var(--pop-pink);font-style:italic}
+  .stat-label{font-family:"JetBrains Mono",monospace;font-size:8.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);margin-top:5px;font-weight:700}
+
+  .highlight{
+    background:var(--ink);
+    color:var(--paper);
+    padding:12px 14px;
+    margin:8px 0 14px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;
+    letter-spacing:0.05em;
+    border-left:5px solid var(--pop-yellow);
+  }
+  .highlight strong{color:var(--pop-yellow);font-size:12px;letter-spacing:0.1em;display:block;margin-bottom:4px}
+  .highlight em{color:var(--pop-pink);font-style:normal;font-weight:700}
+
+  footer{
+    margin-top:44px;
+    padding-top:16px;
+    border-top:3px solid var(--ink);
+    font-family:"JetBrains Mono",monospace;
+    font-size:10px;
+    color:var(--ink);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .footer-kicker{
+    font-family:"Fraunces",serif;
+    font-style:italic;
+    font-size:18px;
+    text-transform:none;
+    letter-spacing:-0.005em;
+    color:var(--ink);
+    margin-bottom:14px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--ink);
+    font-weight:400;
+  }
+  .footer-kicker em{
+    font-style:normal;
+    background:var(--pop-pink);
+    color:var(--paper);
+    padding:1px 8px;
+    font-weight:600;
+  }
+  .footer-meta{
+    display:flex;
+    justify-content:space-between;
+  }
+  footer .v{background:var(--pop-pink);color:var(--paper);padding:2px 8px}
+
+  /* ── STORY OVERLAY ── */
+  .story-overlay{
+    position:fixed;
+    inset:0;
+    background:var(--frame);
+    z-index:100;
+    overflow-y:auto;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .25s ease, visibility .25s;
+  }
+  .story-overlay.open{
+    opacity:1;
+    visibility:visible;
+  }
+  body.story-open{overflow:hidden}
+
+  .story-inner{
+    max-width:680px;
+    margin:0 auto;
+    padding:80px 28px 120px;
+  }
+  @media (max-width:680px){
+    .story-inner{padding:70px 20px 80px}
+  }
+
+  .story-close{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:var(--ink);
+    color:var(--paper);
+    border:2px solid var(--ink);
+    width:44px;height:44px;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    font-family:"JetBrains Mono",monospace;
+    box-shadow:4px 4px 0 var(--pop-pink);
+    transition:all .12s;
+    z-index:101;
+  }
+  .story-close:hover{
+    background:var(--pop-pink);
+    color:var(--paper);
+    transform:translate(-1px,-1px);
+    box-shadow:5px 5px 0 var(--ink);
+  }
+  .story-close:focus-visible{outline:3px solid var(--pop-yellow);outline-offset:2px}
+
+  .story-eyebrow{
+    font-family:"JetBrains Mono",monospace;
+    font-size:10.5px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--ink);
+    background:var(--pop-yellow);
+    display:inline-block;
+    padding:5px 11px;
+    margin-bottom:28px;
+    font-weight:700;
+    border:1.5px solid var(--ink);
+  }
+
+  .story-hook{
+    font-family:"Fraunces",serif;
+    font-size:clamp(28px, 4.5vw, 44px);
+    font-weight:400;
+    font-style:italic;
+    line-height:1.15;
+    letter-spacing:-0.02em;
+    color:var(--ink);
+    margin-bottom:14px;
+    font-variation-settings:"opsz" 144,"SOFT" 30;
+  }
+  .story-hook em{
+    font-style:normal;
+    color:var(--pop-pink);
+    font-weight:500;
+  }
+  .story-hook-sig{
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ink-3);
+    font-weight:600;
+    margin-bottom:48px;
+    padding-bottom:32px;
+    border-bottom:2px solid var(--ink);
+  }
+
+  .story-now{
+    font-family:"Fraunces",serif;
+    font-size:22px;
+    line-height:1.4;
+    color:var(--ink);
+    margin-bottom:40px;
+    letter-spacing:-0.005em;
+  }
+  .story-now strong{font-weight:500;color:var(--pop-pink);font-style:italic}
+
+  .chapter{
+    margin-bottom:36px;
+  }
+  .chapter-num{
+    font-family:"JetBrains Mono",monospace;
+    font-size:10px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--pop-pink);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .chapter-title{
+    font-family:"Fraunces",serif;
+    font-size:24px;
+    font-weight:500;
+    line-height:1.2;
+    letter-spacing:-0.015em;
+    margin-bottom:14px;
+    color:var(--ink);
+  }
+  .chapter p{
+    font-size:16px;
+    line-height:1.65;
+    color:var(--ink-2);
+    margin-bottom:12px;
+  }
+  .chapter p strong{color:var(--ink);font-weight:600}
+
+  .story-divider{
+    text-align:center;
+    margin:48px 0;
+    font-family:"JetBrains Mono",monospace;
+    color:var(--pop-pink);
+    letter-spacing:0.8em;
+    font-size:12px;
+  }
+
+  .story-callback{
+    background:var(--pop-yellow);
+    border:2.5px solid var(--ink);
+    box-shadow:10px 10px 0 var(--pop-pink);
+    padding:28px 26px;
+    margin-top:48px;
+  }
+  .story-callback-label{
+    font-family:"JetBrains Mono",monospace;
+    font-size:10px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--ink);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .story-callback p{
+    font-family:"Fraunces",serif;
+    font-size:22px;
+    font-style:italic;
+    line-height:1.35;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+    font-weight:400;
+  }
+
+  /* ── HERO IMAGE ── */
+  .hero-img{
+    width:100%;
+    aspect-ratio:16 / 7;
+    overflow:hidden;
+    border:2.5px solid var(--ink);
+    box-shadow:8px 8px 0 var(--pop-pink);
+    margin-bottom:0;
+  }
+  .hero-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 40%;
+    display:block;
+  }
+
+  /* ── STICKY NOTE (summary) ── */
+  .sticky-note{
+    position:relative;
+    max-width:100%;
+    width:100%;
+    margin:0;
+    transform:rotate(-1deg);
+    background:var(--pop-yellow);
+    border:none;
+    box-shadow:
+      0 1px 1px rgba(0,0,0,0.15),
+      6px 6px 14px rgba(0,0,0,0.18),
+      12px 12px 0 rgba(0,0,0,0.06);
+    padding:26px 28px 28px;
+  }
+  .sticky-note::before{
+    content:"";
+    position:absolute;
+    top:-11px;
+    left:50%;
+    transform:translateX(-50%) rotate(2deg);
+    width:110px;
+    height:22px;
+    background:rgba(255,255,255,0.45);
+    border:1px solid rgba(0,0,0,0.18);
+    box-shadow:0 1px 2px rgba(0,0,0,0.1);
+  }
+  .sticky-note em{
+    font-style:italic;
+    color:var(--ink);
+    font-weight:500;
+    background:rgba(255,255,255,0.5);
+    padding:0 5px;
+    border-radius:1px;
+  }
+  @media (max-width:680px){
+    .sticky-note{
+      transform:rotate(-1deg);
+      padding:20px 22px 22px;
+    }
+    .sticky-note::before{width:90px;height:18px;top:-9px}
+  }
+
+  /* ── BIB AS BUTTON ── */
+  .bib-btn{
+    cursor:pointer;
+    font-family:"JetBrains Mono",monospace;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .bib-btn .bib-num{font-size:40px;line-height:0.9}
+  .bib-btn:hover{
+    transform:rotate(-2deg) translate(-2px,-2px);
+    box-shadow:9px 9px 0 var(--pop-pink);
+  }
+  .bib-btn:focus-visible{outline:3px solid var(--pop-yellow);outline-offset:3px}
+
+  /* ── STICKER (current event) ── */
+  .sticker{
+    background:var(--pop-pink);
+    color:var(--paper);
+    border:2.5px solid var(--ink);
+    padding:14px 16px;
+    margin:8px 0 16px;
+    transform:rotate(-2.5deg);
+    box-shadow:5px 5px 0 var(--ink);
+    position:relative;
+  }
+  .sticker::before{
+    content:"";
+    position:absolute;
+    top:-7px;left:50%;
+    transform:translateX(-50%) rotate(3deg);
+    width:54px;height:14px;
+    background:rgba(255,255,255,0.35);
+    border:1px solid rgba(0,0,0,0.25);
+  }
+  .sticker-tag{
+    font-family:"JetBrains Mono",monospace;
+    font-size:9.5px;
+    letter-spacing:0.2em;
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .sticker-event{
+    font-family:"Fraunces",serif;
+    font-size:19px;
+    font-weight:600;
+    line-height:1.1;
+    letter-spacing:-0.01em;
+  }
+  .sticker-meta{font-size:11.5px;margin-top:4px;opacity:0.95}
+  .sticker-date{
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;
+    font-weight:700;
+    margin-top:8px;
+    background:var(--paper);
+    color:var(--ink);
+    display:inline-block;
+    padding:2px 8px;
+    border:1.5px solid var(--ink);
+  }
+
+  /* ── HEALTH STATS ── */
+  .health-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border:2.5px solid var(--ink);
+    background:var(--ink);
+    gap:2px;
+    box-shadow:5px 5px 0 var(--pop-pink);
+  }
+  .health-stat{background:var(--paper);padding:12px 6px;text-align:center}
+  .health-stat:nth-child(even){background:var(--pop-yellow)}
+  .health-num{
+    font-family:"Fraunces",serif;
+    font-size:26px;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1;
+    font-variation-settings:"opsz" 144;
+  }
+  .health-label{
+    font-family:"JetBrains Mono",monospace;
+    font-size:8.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-top:5px;
+    font-weight:700;
+  }
+  .health-note{margin-top:8px}
+
+  /* ── RACE TABLE ── */
+  .race-table-wrap{overflow-x:auto;margin-top:8px}
+  .race-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13.5px;
+  }
+  .race-table th{
+    font-family:"JetBrains Mono",monospace;
+    font-size:9.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    text-align:left;
+    padding:10px 12px;
+    background:var(--ink);
+    color:var(--paper);
+    white-space:nowrap;
+    font-weight:700;
+  }
+  .race-table td{
+    padding:12px;
+    border-bottom:1.5px solid var(--ink);
+    color:var(--ink-2);
+    vertical-align:top;
+  }
+  .race-table td:first-child{
+    font-family:"JetBrains Mono",monospace;
+    font-weight:700;
+    color:var(--ink);
+    white-space:nowrap;
+  }
+  .race-table td:nth-child(2){font-weight:600;color:var(--ink)}
+  .race-table tr.hl td{background:var(--pop-yellow);color:var(--ink)}
+  .race-table tr.upcoming td{
+    background:var(--pop-pink);
+    color:var(--paper);
+    font-weight:600;
+  }
+  .race-table tr.upcoming td:first-child{color:var(--paper)}
+
+  /* ── HIRE ME CTA ── */
+  .hire-cta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:14px;
+    padding:14px 16px;
+    background:var(--ink);
+    color:var(--paper);
+    text-decoration:none;
+    border:2.5px solid var(--ink);
+    box-shadow:6px 6px 0 var(--pop-pink);
+    transition:transform .12s ease, box-shadow .12s ease;
+    font-family:"Instrument Sans",sans-serif;
+  }
+  .hire-cta:hover{
+    transform:translate(-2px,-2px);
+    box-shadow:8px 8px 0 var(--pop-pink);
+    background:var(--pop-pink);
+  }
+  .hire-cta-tag{
+    font-family:"JetBrains Mono",monospace;
+    font-size:9.5px;
+    letter-spacing:0.22em;
+    font-weight:700;
+    background:var(--pop-yellow);
+    color:var(--ink);
+    padding:2px 7px;
+    border:1.5px solid var(--paper);
+  }
+  .hire-cta-label{
+    flex:1;
+    font-family:"Fraunces",serif;
+    font-size:17px;
+    font-weight:500;
+    letter-spacing:-0.005em;
+  }
+  .hire-cta-arrow{
+    font-family:"JetBrains Mono",monospace;
+    font-size:20px;
+    font-weight:700;
+    transition:transform .12s ease;
+  }
+  .hire-cta:hover .hire-cta-arrow{transform:translateX(4px)}
+
+  /* ── KPI SINGLE COLUMN ── */
+  .kpi-list{
+    border:2.5px solid var(--ink);
+    background:var(--paper);
+    box-shadow:5px 5px 0 var(--pop-pink);
+    margin-bottom:16px;
+  }
+  .kpi{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:14px;
+    padding:12px 14px;
+    border-bottom:1.5px solid var(--ink);
+  }
+  .kpi:last-child{border-bottom:none}
+  .kpi:nth-child(even){background:var(--pop-yellow)}
+  .kpi-num{
+    font-family:"Fraunces",serif;
+    font-size:34px;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1;
+    font-variation-settings:"opsz" 144;
+    letter-spacing:-0.02em;
+    min-width:52px;
+  }
+  .kpi-label{
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink);
+    font-weight:700;
+    text-align:right;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee{
+    background:var(--ink);
+    color:var(--pop-yellow);
+    border:2.5px solid var(--ink);
+    overflow:hidden;
+    position:relative;
+    margin-bottom:18px;
+    padding:10px 0;
+    box-shadow:5px 5px 0 var(--pop-pink);
+  }
+  .marquee-track{
+    display:inline-flex;
+    white-space:nowrap;
+    animation:marquee-scroll 28s linear infinite;
+    will-change:transform;
+  }
+  .marquee-item{
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    padding-right:28px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--paper);
+  }
+  .marquee-tag{
+    background:var(--pop-pink);
+    color:var(--paper);
+    padding:2px 8px;
+    font-size:11px;
+    letter-spacing:0.18em;
+    border:1.5px solid var(--paper);
+  }
+  .marquee-dot{color:var(--pop-yellow);font-size:10px}
+  @keyframes marquee-scroll{
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
+  }
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  @media (prefers-reduced-motion:reduce){
+    .marquee-track{animation:none}
+  }
+
+  @media print{
+    .story-overlay{display:none}
+    body{padding:0;background:#fff}
+    .page{max-width:none}
+    @page{margin:12mm;size:A4}
+    .summary,.bib,.stats-strip{box-shadow:none}
+    .empty{border-color:#999;background:#f5f5f5;color:#777}
+    .empty::before,.empty-inline::before{color:#666}
+  }
+
+</style>
 </head>
 <body>
 <div class="page">
@@ -16,26 +843,20 @@
 
   <header>
     <div>
-      <div class="name-row">
-        <h1>Avishek <em>Nayak</em></h1>
-        <a class="story-btn" href="#story" id="story-trigger">Read my story <span class="arrow">→</span></a>
-      </div>
+      <h1>Avishek <em>Nayak</em></h1>
       <div class="tagline">
         Underdog cyclist <span>·</span> Designer <span>·</span> Community builder
       </div>
     </div>
-    <div class="bib" aria-hidden="true">
-      <div class="bib-label">EVENT</div>
-      <div class="bib-num">2027</div>
-      <div class="bib-sub">IRONMAN · GOA</div>
+    <div class="header-btns">
+      <a class="story-btn" href="#story" id="story-trigger">Read my story <span class="arrow">→</span></a>
+      <a class="story-btn" href="#races" id="races-trigger">View my calendar <span class="arrow">→</span></a>
     </div>
 
     <div class="contact">
-      <span>Ahmedabad, IN</span>
+      <span>INDIA</span>
       <span class="dot">●</span>
-      <span>+91 99254 03798</span>
-      <span class="dot">●</span>
-      <a href="https://www.linkedin.com/in/avisheknayak/" target="_blank" rel="noopener">linkedin/avisheknayak</a>
+      <a href="mailto:workdesk.avishek@gmail.com">workdesk.avishek@gmail.com</a>
       <span class="dot">●</span>
       <a class="mini-btn" href="https://www.google.com/search?tbm=isch&q=Avishek+Nayak+UX+Designer" target="_blank" rel="noopener">Google images ↗</a>
       <span class="dot">●</span>
@@ -43,11 +864,22 @@
     </div>
   </header>
 
-<div class="hero-img">
-  <img src="photo.jpeg" alt="Avishek">
-</div>
-  
-  <div class="summary">
+  <!-- ═══ MARQUEE ═══ -->
+  <div class="marquee" aria-label="Current race: Pune to Mahabaleshwar, 190km on Aug 22, 2026">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-tag">Current race</span> Pune → Mahabaleshwar <span class="marquee-dot">◆</span> 190 km · Tamhini + Ambenali Ghats <span class="marquee-dot">◆</span> Aug 22, 2026 <span class="marquee-dot">◆</span></span>
+      <span class="marquee-item"><span class="marquee-tag">Current race</span> Pune → Mahabaleshwar <span class="marquee-dot">◆</span> 190 km · Tamhini + Ambenali Ghats <span class="marquee-dot">◆</span> Aug 22, 2026 <span class="marquee-dot">◆</span></span>
+      <span class="marquee-item" aria-hidden="true"><span class="marquee-tag">Current race</span> Pune → Mahabaleshwar <span class="marquee-dot">◆</span> 190 km · Tamhini + Ambenali Ghats <span class="marquee-dot">◆</span> Aug 22, 2026 <span class="marquee-dot">◆</span></span>
+      <span class="marquee-item" aria-hidden="true"><span class="marquee-tag">Current race</span> Pune → Mahabaleshwar <span class="marquee-dot">◆</span> 190 km · Tamhini + Ambenali Ghats <span class="marquee-dot">◆</span> Aug 22, 2026 <span class="marquee-dot">◆</span></span>
+    </div>
+  </div>
+
+  <!-- ═══ HERO IMAGE ═══ -->
+  <div class="hero-img">
+    <img src="images/hero.jpg" alt="Avishek riding, Ironman bib 164">
+  </div>
+
+  <div class="summary sticky-note">
     Passion for the <em>wheels &amp; endurance</em>, profession of a <em>UX Designer</em> — and I keep balancing both to sustain a life I actually want.
   </div>
 
@@ -56,40 +888,21 @@
     <aside>
 
       <section>
-        <h2 class="sec-title"><span>At a glance</span><span class="num">01</span></h2>
-        <div class="quick-fact">
-          <div class="quick-fact-label">Based</div>
-          <div class="quick-fact-val">Ahmedabad, India</div>
-        </div>
-        <div class="quick-fact">
-          <div class="quick-fact-label">Bringing</div>
-          <div class="quick-fact-val">Senior UX Designer<small>+ UX Tutor · Sales Executive</small><small>IxDF Local Leader · Saurashtra</small></div>
-        </div>
-        <div class="quick-fact">
-          <div class="quick-fact-label">Chasing</div>
-          <div class="quick-fact-val">Ironman Goa <span class="accent-pink">2027</span></div>
-        </div>
-        <div class="quick-fact">
-          <div class="quick-fact-label">Dreaming</div>
-          <div class="quick-fact-val">Tour de France <small>one day · no shortcut</small></div>
-        </div>
-      </section>
-
-      <section>
         <h2 class="sec-title"><span>Athletic</span><span class="num">02</span></h2>
-        <div class="stats-strip">
-          <div class="stat"><div class="stat-num">3</div><div class="stat-label">BRMs</div></div>
-          <div class="stat"><div class="stat-num">1</div><div class="stat-label">ITT Race</div></div>
-          <div class="stat"><div class="stat-num">1</div><div class="stat-label">Podium</div></div>
-          <div class="stat"><div class="stat-num">9</div><div class="stat-label">Half Mar.</div></div>
-          <div class="stat"><div class="stat-num">1</div><div class="stat-label">Full Mar.</div></div>
-          <div class="stat"><div class="stat-num">0</div><div class="stat-label">Races</div></div>
+        <div class="kpi-list">
+          <div class="kpi"><div class="kpi-num">3</div><div class="kpi-label">BRMs</div></div>
+          <div class="kpi"><div class="kpi-num">1</div><div class="kpi-label">ITT Race</div></div>
+          <div class="kpi"><div class="kpi-num">1</div><div class="kpi-label">Podium finish</div></div>
+          <div class="kpi"><div class="kpi-num">9</div><div class="kpi-label">Half Marathons</div></div>
+          <div class="kpi"><div class="kpi-num">1</div><div class="kpi-label">Full Marathon</div></div>
+          <div class="kpi"><div class="kpi-num">0</div><div class="kpi-label">Races</div></div>
         </div>
 
-        <div class="highlight">
-          <strong>NEXT START LINE</strong>
-          Pune → Mahabaleshwar <em>190km</em><br>
-          Tamhini + Ambenali Ghats · Aug 22, '26
+        <div class="sticker">
+          <div class="sticker-tag">● NOW RACING</div>
+          <div class="sticker-event">Pune → Mahabaleshwar</div>
+          <div class="sticker-meta">190 km · Tamhini + Ambenali Ghats</div>
+          <div class="sticker-date">Aug 22, 2026</div>
         </div>
 
         <div class="quick-fact">
@@ -102,44 +915,12 @@
         </div>
       </section>
 
-      <section>
-        <h2 class="sec-title"><span>Skills</span><span class="num">03</span></h2>
-        <div class="skill-group">
-          <div class="skill-group-label">Design</div>
-          <div class="skill-group-list">Digital design, accessibility, usability testing, behavioural psychology</div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-label">Communication</div>
-          <div class="skill-group-list">Storytelling, public speaking, client communication, business understanding</div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-label">Community EQ</div>
-          <div class="skill-group-list">Empathy, group-energy sensing, social awareness, motivation reading, handling egos &amp; burnouts</div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-label">Event ops</div>
-          <div class="skill-group-list">Route planning, event logistics, volunteer coordination</div>
-        </div>
-      </section>
-
     </aside>
 
     <main>
 
       <section>
-        <h2 class="sec-title"><span>Community building</span><span class="num">05</span></h2>
-
-        <div class="entry">
-          <div class="entry-head">
-            <div class="entry-title">IxDF Local Leader · Design Community of Saurashtra</div>
-            <div class="entry-meta">2024 – present</div>
-          </div>
-          <div class="entry-sub">Interaction Design Foundation</div>
-          <ul>
-            <li><strong>12 active members</strong> · 10–12 attendance per event</li>
-            <li>Events on <strong>design awareness</strong>, connecting people from the same industry</li>
-          </ul>
-        </div>
+        <h2 class="sec-title"><span>Passion to Paisa</span><span class="num">05</span></h2>
 
         <div class="entry">
           <div class="entry-head">
@@ -213,29 +994,11 @@
           <div class="entry-sub">7Span</div>
         </div>
 
-        <div class="entry">
-          <div class="entry-head">
-            <div class="entry-title">UX Tutor</div>
-            <div class="entry-meta">9 months</div>
-          </div>
-          <div class="entry-sub">Red &amp; White Education</div>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <div class="entry-title">Junior UX Designer</div>
-            <div class="entry-meta">2.1 yrs</div>
-          </div>
-          <div class="entry-sub">Twist Open UX</div>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <div class="entry-title">Sales Executive</div>
-            <div class="entry-meta">3 months</div>
-          </div>
-          <div class="entry-sub">Tutoraj</div>
-        </div>
+        <a class="hire-cta" href="https://avisheknayak.vercel.app/" target="_blank" rel="noopener">
+          <span class="hire-cta-tag">CTA</span>
+          <span class="hire-cta-label">Hire me as a Designer !!</span>
+          <span class="hire-cta-arrow">→</span>
+        </a>
       </section>
 
     </main>
@@ -341,7 +1104,128 @@
   </div>
 </aside>
 
+<!-- ═══ RACE LOG OVERLAY ═══ -->
+<aside class="story-overlay race-overlay" id="races-overlay" aria-hidden="true" aria-labelledby="races-title">
+  <button class="story-close" id="races-close" aria-label="Close race log">✕</button>
 
-<script src="script.js"></script>
+  <div class="story-inner race-inner">
+
+    <div class="story-eyebrow">Race log</div>
+    <h2 class="story-hook race-title" id="races-title">
+      Every start line — <em>done &amp; upcoming</em>.
+    </h2>
+    <div class="story-hook-sig">Yellow rows = the ones worth talking about</div>
+
+    <div class="race-table-wrap">
+      <table class="race-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Event</th>
+            <th>Type</th>
+            <th>Timing</th>
+            <th>Learning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hl">
+            <td>2026</td>
+            <td>Dummy Event Name</td>
+            <td>Cyclothon · 190km</td>
+            <td>—</td>
+            <td>Dummy learning text goes here, replace later.</td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>Dummy Event Name</td>
+            <td>Full Marathon</td>
+            <td>00:00:00</td>
+            <td>Dummy learning text goes here, replace later.</td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>Dummy Event Name</td>
+            <td>Half Marathon</td>
+            <td>00:00:00</td>
+            <td>Dummy learning text goes here, replace later.</td>
+          </tr>
+          <tr class="hl">
+            <td>2024</td>
+            <td>Dummy Event Name</td>
+            <td>ITT Race</td>
+            <td>00:00:00</td>
+            <td>Dummy learning text goes here, replace later.</td>
+          </tr>
+          <tr>
+            <td>2024</td>
+            <td>Dummy Event Name</td>
+            <td>BRM 200</td>
+            <td>00:00:00</td>
+            <td>Dummy learning text goes here, replace later.</td>
+          </tr>
+          <tr>
+            <td>2023</td>
+            <td>Dummy Event Name</td>
+            <td>BRM 200</td>
+            <td>00:00:00</td>
+            <td>Dummy learning text goes here, replace later.</td>
+          </tr>
+          <tr class="upcoming">
+            <td>2027</td>
+            <td>Ironman Goa</td>
+            <td>Triathlon · 70.3</td>
+            <td>upcoming</td>
+            <td>The one everything is building toward.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</aside>
+
+
+<script>
+(function(){
+  function wireOverlay(overlayId, triggerId, closeId, hash){
+    const overlay = document.getElementById(overlayId);
+    const trigger = document.getElementById(triggerId);
+    const closeBtn = document.getElementById(closeId);
+    if(!overlay || !trigger || !closeBtn) return;
+
+    function open(e){
+      if(e) e.preventDefault();
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden','false');
+      document.body.classList.add('story-open');
+      overlay.scrollTop = 0;
+      closeBtn.focus();
+    }
+    function close(){
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden','true');
+      document.body.classList.remove('story-open');
+      trigger.focus();
+    }
+
+    trigger.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', e => {
+      if(e.key === 'Escape' && overlay.classList.contains('open')) close();
+    });
+
+    if(hash){
+      if(window.location.hash === hash) open();
+      window.addEventListener('hashchange', () => {
+        if(window.location.hash === hash) open();
+      });
+    }
+  }
+
+  wireOverlay('story-overlay', 'story-trigger', 'story-close', '#story');
+  wireOverlay('races-overlay', 'races-trigger', 'races-close', '#races');
+})();
+
+</script>
 </body>
 </html>
