@@ -6,7 +6,7 @@
 <title>Avishek Nayak — Resume</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#f5f0e4;
@@ -20,41 +20,164 @@
     --pop-cyan:#00d4ff;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--frame);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  html,body{background:var(--frame);color:var(--ink);font-family:"Bricolage Grotesque",sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
   body{
     min-height:100vh;
-    padding:48px 24px;
+    padding:48px 48px;
   }
   .page{
-    max-width:900px;
-    margin:0 auto;
+    max-width:none;
+    margin:0;
     position:relative;
   }
   @media (max-width:680px){
-    body{padding:24px 16px}
+    body{padding:24px 20px}
   }
 
-  .road-stripe{
-    height:6px;
-    background:repeating-linear-gradient(90deg,
-      var(--ink) 0 20px,
-      transparent 20px 32px,
-      var(--ink) 32px 52px,
-      transparent 52px 64px);
-    margin-bottom:24px;
-  }
 
   header{
     display:grid;
     grid-template-columns:1fr auto;
-    align-items:end;
-    gap:24px;
-    padding-bottom:28px;
-    border-bottom:3px solid var(--ink);
-    margin-bottom:32px;
+    align-items:start;
+    gap:32px;
+    padding-bottom:12px;
+    margin-bottom:12px;
+  }
+  /* ── HERO SECTION CONTAINER ── */
+  .hero-section{
+    width:calc(100% + 96px);
+    margin-left:-48px;
+    margin-right:-48px;
+    margin-top:-48px;
+    padding:48px 48px 20px;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    /* drop your image here: background-image:url('your-image.jpg'); */
+  }
+
+  .header-left{display:flex;flex-direction:column}
+  .header-sub{
+    font-family:"Bricolage Grotesque",sans-serif;
+    
+    font-size:17px;
+    color:var(--ink-3);
+    margin-top:8px;
+    letter-spacing:-0.005em;
+    font-weight:400;
+  }
+
+  /* ── TAGLINE STACK ── */
+  .tagline-stack{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:0;
+  }
+  .tag-item{
+    position:relative;
+    cursor:pointer;
+    padding:6px 4px;
+    border-radius:4px;
+    transition:background .15s;
+  }
+  .tag-item:hover{
+    background:rgba(255,29,110,0.08);
+  }
+  .tag-word{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:clamp(15px,2vw,20px);
+    font-weight:400;
+    
+    color:var(--ink-3);
+    text-align:right;
+    display:block;
+    letter-spacing:-0.01em;
+    line-height:1.3;
+    transition:color .15s;
+    user-select:none;
+  }
+  .tag-item:hover .tag-word{
+    color:var(--ink);
+  }
+
+  /* ── IDENTITY OVERLAY ── */
+  .id-overlay{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(90deg,
+      rgba(10,10,10,0.94) 0%,
+      rgba(10,10,10,0.85) 35%,
+      rgba(10,10,10,0.4) 65%,
+      rgba(10,10,10,0) 100%);
+    z-index:200;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .22s ease, visibility .22s;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    padding:48px;
+  }
+  .id-overlay.active{
+    opacity:1;
+    visibility:visible;
+  }
+  .id-overlay-inner{
+    max-width:560px;
+    width:100%;
+    text-align:left;
+  }
+  .id-overlay-label{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:10px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--pop-pink);
+    font-weight:700;
+    margin-bottom:20px;
+    text-align:left;
+  }
+  .id-overlay-title{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:clamp(32px,5vw,60px);
+    font-weight:400;
+    
+    color:var(--paper);
+    line-height:1;
+    letter-spacing:-0.025em;
+    margin-bottom:28px;
+    
+    text-align:left;
+  }
+  .id-overlay-body{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:15px;
+    line-height:1.75;
+    color:rgba(245,240,228,0.82);
+    font-weight:400;
+    text-align:left;
+  }
+  .id-overlay-body strong{
+    color:var(--pop-yellow);
+    font-weight:600;
+  }
+
+  @media (max-width:680px){
+    header{grid-template-columns:1fr;gap:20px}
+    .tagline-stack{align-items:flex-start}
+    .id-overlay{
+      padding:28px 20px;
+      align-items:flex-start;
+      padding-top:60px;
+      background:linear-gradient(180deg,
+        rgba(10,10,10,0.95) 0%,
+        rgba(10,10,10,0.9) 70%,
+        rgba(10,10,10,0.5) 100%);
+    }
   }
   .eyebrow{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:10.5px;
     letter-spacing:0.22em;
     text-transform:uppercase;
@@ -64,32 +187,29 @@
     padding:4px 10px;
     margin-bottom:18px;
     font-weight:700;
-    border:1.5px solid var(--ink);
+    border:0.5px solid var(--ink);
   }
   .name-row{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}
   .header-btns{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
+    flex-wrap:wrap;
     gap:10px;
-    align-self:end;
-    justify-self:end;
+    margin-top:16px;
+    margin-bottom:32px;
   }
-  .header-btns .story-btn{margin-bottom:0;text-align:center;min-width:180px}
-  @media (max-width:680px){
-    .header-btns{flex-direction:row;flex-wrap:wrap;align-self:start;margin-top:14px}
-    .header-btns .story-btn{min-width:0}
-  }
+  .header-btns .story-btn{margin-bottom:0;min-width:0}
   .story-btn{
     background:var(--pop-pink);
     color:var(--paper);
     padding:8px 14px;
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:10.5px;
     letter-spacing:0.14em;
     text-transform:uppercase;
     font-weight:700;
     text-decoration:none;
-    border:2px solid var(--ink);
+    border:0.5px solid var(--ink);
     box-shadow:3px 3px 0 var(--ink);
     margin-bottom:10px;
     white-space:nowrap;
@@ -104,15 +224,15 @@
   .story-btn .arrow{display:inline-block;margin-left:4px;transition:transform .12s}
   .story-btn:hover .arrow{transform:translateX(3px)}
   h1{
-    font-family:"Fraunces",serif;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-weight:500;
     font-size:clamp(44px, 7vw, 76px);
     line-height:0.92;
     letter-spacing:-0.025em;
-    font-variation-settings:"opsz" 144,"SOFT" 20;
+    
   }
   h1 em{
-    font-style:italic;
+    
     font-weight:400;
     color:var(--pop-pink);
     position:relative;
@@ -127,8 +247,8 @@
     z-index:-1;
   }
   .tagline{
-    font-family:"Fraunces",serif;
-    font-style:italic;
+    font-family:"Bricolage Grotesque",sans-serif;
+    
     font-size:19px;
     color:var(--ink-2);
     margin-top:14px;
@@ -139,7 +259,7 @@
     color:var(--pop-yellow);
     padding:1px 8px 2px;
     font-style:normal;
-    font-family:"Instrument Sans",sans-serif;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-weight:600;
     font-size:13px;
     letter-spacing:0.05em;
@@ -152,13 +272,13 @@
     color:var(--paper);
     padding:14px 18px;
     text-align:center;
-    border:3px solid var(--ink);
+    border:0.5px solid var(--ink);
     transform:rotate(-2deg);
     box-shadow:6px 6px 0 var(--pop-pink);
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
   }
   .bib-label{font-size:9px;letter-spacing:0.18em;color:var(--pop-yellow);margin-bottom:2px;font-weight:700}
-  .bib-num{font-family:"Fraunces",serif;font-size:34px;font-weight:600;line-height:1;letter-spacing:-0.02em;color:var(--paper)}
+  .bib-num{font-family:"Bricolage Grotesque",sans-serif;font-size:34px;font-weight:600;line-height:1;letter-spacing:-0.02em;color:var(--paper)}
   .bib-sub{font-size:9px;color:var(--paper);margin-top:4px;letter-spacing:0.08em}
 
   .contact{
@@ -167,17 +287,17 @@
     display:flex;
     flex-wrap:wrap;
     gap:8px 18px;
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:11px;
     color:var(--ink-2);
     font-weight:500;
     align-items:center;
   }
-  .contact a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--pop-pink);padding-bottom:1px;transition:all .15s}
+  .contact a{color:var(--ink);text-decoration:none;border-bottom:0.5px solid var(--pop-pink);padding-bottom:1px;transition:all .15s}
   .contact a:hover{background:var(--pop-yellow)}
   .contact a.mini-btn{
-    border:1.5px solid var(--ink);
-    border-bottom:1.5px solid var(--ink);
+    border:0.5px solid var(--ink);
+    
     background:var(--pop-yellow);
     padding:2px 8px;
     font-weight:700;
@@ -198,14 +318,14 @@
 
   section{margin-bottom:30px}
   .sec-title{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:10.5px;
     letter-spacing:0.22em;
     text-transform:uppercase;
     color:var(--ink);
     margin-bottom:14px;
     padding-bottom:6px;
-    border-bottom:2px solid var(--ink);
+    
     display:flex;
     align-items:baseline;
     justify-content:space-between;
@@ -220,7 +340,7 @@
   }
 
   .summary{
-    font-family:"Fraunces",serif;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:20px;
     line-height:1.45;
     color:var(--ink);
@@ -228,57 +348,57 @@
     padding:18px 22px;
     margin-bottom:34px;
     background:var(--pop-yellow);
-    border:2.5px solid var(--ink);
+    border:0.5px solid var(--ink);
     box-shadow:8px 8px 0 var(--pop-pink);
   }
 
   .entry{margin-bottom:20px}
   .entry:last-child{margin-bottom:0}
   .entry-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:4px}
-  .entry-title{font-family:"Fraunces",serif;font-size:17px;font-weight:500;letter-spacing:-0.01em;color:var(--ink)}
+  .entry-title{font-family:"Bricolage Grotesque",sans-serif;font-size:17px;font-weight:500;letter-spacing:-0.01em;color:var(--ink)}
   .entry-meta{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:10.5px;
     color:var(--ink);
     white-space:nowrap;
     background:var(--pop-yellow-2);
     padding:2px 7px;
-    border:1px solid var(--ink);
+    border:0.5px solid var(--ink);
     font-weight:600;
   }
-  .entry-sub{font-size:13px;color:var(--ink-3);font-style:italic;margin-bottom:6px}
+  .entry-sub{font-size:13px;color:var(--ink-3);margin-bottom:6px}
   .entry ul{list-style:none;margin-top:6px}
   .entry li{font-size:13.5px;color:var(--ink-2);padding-left:18px;position:relative;margin-bottom:4px}
   .entry li::before{content:"→";position:absolute;left:0;top:0;color:var(--pop-pink);font-weight:700}
 
   .empty{
     display:block;
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:11px;
     color:var(--ink-3);
     background:repeating-linear-gradient(45deg, transparent 0 6px, rgba(0,0,0,0.04) 6px 7px);
-    border:1.5px dashed var(--pop-pink);
+    
     padding:6px 10px;
     margin:5px 0;
   }
   .empty::before{content:"▸ todo · ";color:var(--pop-pink);font-weight:700}
   .empty-inline{border:none;background:none;padding:0;display:inline-block}
-  .empty-inline::before{content:"todo · ";color:var(--pop-pink);font-weight:700;font-family:"JetBrains Mono",monospace;font-size:11px}
+  .empty-inline::before{content:"todo · ";color:var(--pop-pink);font-weight:700;font-family:"Bricolage Grotesque",sans-serif;font-size:11px}
 
   .quick-fact{margin-bottom:14px}
-  .quick-fact-label{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px;font-weight:600}
+  .quick-fact-label{font-family:"Bricolage Grotesque",sans-serif;font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px;font-weight:600}
   .quick-fact-val{font-size:13.5px;color:var(--ink);font-weight:500}
   .quick-fact-val .accent-pink{color:var(--pop-pink);font-weight:700}
   .quick-fact-val small{color:var(--ink-3);font-size:12px;font-weight:400;display:block;margin-top:1px}
 
   .skill-group{margin-bottom:14px}
-  .skill-group-label{font-family:"Fraunces",serif;font-style:italic;font-size:15px;color:var(--pop-pink);margin-bottom:4px;font-weight:500}
+  .skill-group-label{font-family:"Bricolage Grotesque",sans-serif;font-size:15px;color:var(--pop-pink);margin-bottom:4px;font-weight:500}
   .skill-group-list{font-size:13px;color:var(--ink-2);line-height:1.55}
 
   .stats-strip{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    border:2.5px solid var(--ink);
+    border:0.5px solid var(--ink);
     margin-bottom:16px;
     background:var(--ink);
     gap:2px;
@@ -286,19 +406,19 @@
   }
   .stat{background:var(--paper);padding:12px 6px;text-align:center}
   .stat:nth-child(odd){background:var(--pop-yellow)}
-  .stat-num{font-family:"Fraunces",serif;font-size:30px;font-weight:600;color:var(--ink);line-height:1;font-variation-settings:"opsz" 144}
-  .stat-num.q{font-size:18px;color:var(--pop-pink);font-style:italic}
-  .stat-label{font-family:"JetBrains Mono",monospace;font-size:8.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);margin-top:5px;font-weight:700}
+  .stat-num{font-family:"Bricolage Grotesque",sans-serif;font-size:30px;font-weight:600;color:var(--ink);line-height:1;font-variation-settings:"opsz" 144}
+  .stat-num.q{font-size:18px;color:var(--pop-pink);}
+  .stat-label{font-family:"Bricolage Grotesque",sans-serif;font-size:8.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);margin-top:5px;font-weight:700}
 
   .highlight{
     background:var(--ink);
     color:var(--paper);
     padding:12px 14px;
     margin:8px 0 14px;
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:11px;
     letter-spacing:0.05em;
-    border-left:5px solid var(--pop-yellow);
+    border-left:0.5px solid var(--pop-yellow);
   }
   .highlight strong{color:var(--pop-yellow);font-size:12px;letter-spacing:0.1em;display:block;margin-bottom:4px}
   .highlight em{color:var(--pop-pink);font-style:normal;font-weight:700}
@@ -306,8 +426,8 @@
   footer{
     margin-top:44px;
     padding-top:16px;
-    border-top:3px solid var(--ink);
-    font-family:"JetBrains Mono",monospace;
+    
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:10px;
     color:var(--ink);
     letter-spacing:0.1em;
@@ -315,15 +435,15 @@
     font-weight:600;
   }
   .footer-kicker{
-    font-family:"Fraunces",serif;
-    font-style:italic;
+    font-family:"Bricolage Grotesque",sans-serif;
+    
     font-size:18px;
     text-transform:none;
     letter-spacing:-0.005em;
     color:var(--ink);
     margin-bottom:14px;
     padding-bottom:14px;
-    border-bottom:1px solid var(--ink);
+    
     font-weight:400;
   }
   .footer-kicker em{
@@ -371,12 +491,12 @@
     right:20px;
     background:var(--ink);
     color:var(--paper);
-    border:2px solid var(--ink);
+    border:0.5px solid var(--ink);
     width:44px;height:44px;
     font-size:18px;
     font-weight:700;
     cursor:pointer;
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     box-shadow:4px 4px 0 var(--pop-pink);
     transition:all .12s;
     z-index:101;
@@ -390,7 +510,7 @@
   .story-close:focus-visible{outline:3px solid var(--pop-yellow);outline-offset:2px}
 
   .story-eyebrow{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:10.5px;
     letter-spacing:0.22em;
     text-transform:uppercase;
@@ -400,19 +520,19 @@
     padding:5px 11px;
     margin-bottom:28px;
     font-weight:700;
-    border:1.5px solid var(--ink);
+    border:0.5px solid var(--ink);
   }
 
   .story-hook{
-    font-family:"Fraunces",serif;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:clamp(28px, 4.5vw, 44px);
     font-weight:400;
-    font-style:italic;
+    
     line-height:1.15;
     letter-spacing:-0.02em;
     color:var(--ink);
     margin-bottom:14px;
-    font-variation-settings:"opsz" 144,"SOFT" 30;
+    
   }
   .story-hook em{
     font-style:normal;
@@ -420,7 +540,7 @@
     font-weight:500;
   }
   .story-hook-sig{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:11px;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -428,24 +548,24 @@
     font-weight:600;
     margin-bottom:48px;
     padding-bottom:32px;
-    border-bottom:2px solid var(--ink);
+    
   }
 
   .story-now{
-    font-family:"Fraunces",serif;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:22px;
     line-height:1.4;
     color:var(--ink);
     margin-bottom:40px;
     letter-spacing:-0.005em;
   }
-  .story-now strong{font-weight:500;color:var(--pop-pink);font-style:italic}
+  .story-now strong{font-weight:500;color:var(--pop-pink);}
 
   .chapter{
     margin-bottom:36px;
   }
   .chapter-num{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:10px;
     letter-spacing:0.22em;
     text-transform:uppercase;
@@ -454,7 +574,7 @@
     margin-bottom:6px;
   }
   .chapter-title{
-    font-family:"Fraunces",serif;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:24px;
     font-weight:500;
     line-height:1.2;
@@ -473,7 +593,7 @@
   .story-divider{
     text-align:center;
     margin:48px 0;
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     color:var(--pop-pink);
     letter-spacing:0.8em;
     font-size:12px;
@@ -481,13 +601,13 @@
 
   .story-callback{
     background:var(--pop-yellow);
-    border:2.5px solid var(--ink);
+    border:0.5px solid var(--ink);
     box-shadow:10px 10px 0 var(--pop-pink);
     padding:28px 26px;
     margin-top:48px;
   }
   .story-callback-label{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:10px;
     letter-spacing:0.22em;
     text-transform:uppercase;
@@ -496,9 +616,9 @@
     margin-bottom:14px;
   }
   .story-callback p{
-    font-family:"Fraunces",serif;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:22px;
-    font-style:italic;
+    
     line-height:1.35;
     color:var(--ink);
     letter-spacing:-0.01em;
@@ -510,7 +630,7 @@
     width:100%;
     aspect-ratio:16 / 7;
     overflow:hidden;
-    border:2.5px solid var(--ink);
+    border:0.5px solid var(--ink);
     box-shadow:8px 8px 0 var(--pop-pink);
     margin-bottom:0;
   }
@@ -546,11 +666,11 @@
     width:110px;
     height:22px;
     background:rgba(255,255,255,0.45);
-    border:1px solid rgba(0,0,0,0.18);
+    border:0.5px solid rgba(0,0,0,0.18);
     box-shadow:0 1px 2px rgba(0,0,0,0.1);
   }
   .sticky-note em{
-    font-style:italic;
+    
     color:var(--ink);
     font-weight:500;
     background:rgba(255,255,255,0.5);
@@ -568,7 +688,7 @@
   /* ── BIB AS BUTTON ── */
   .bib-btn{
     cursor:pointer;
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     transition:transform .12s ease, box-shadow .12s ease;
   }
   .bib-btn .bib-num{font-size:40px;line-height:0.9}
@@ -582,12 +702,69 @@
   .sticker{
     background:var(--pop-pink);
     color:var(--paper);
-    border:2.5px solid var(--ink);
+    border:0.5px solid var(--ink);
     padding:14px 16px;
     margin:8px 0 16px;
     transform:rotate(-2.5deg);
     box-shadow:5px 5px 0 var(--ink);
     position:relative;
+  }
+
+  /* ── FLOATING STICKER ── */
+  .floating-sticker{
+    position:fixed;
+    bottom:32px;
+    right:32px;
+    z-index:50;
+    background:var(--pop-yellow);
+    color:var(--ink);
+    border:0.5px solid var(--ink);
+    padding:16px 18px;
+    transform:rotate(2deg);
+    box-shadow:5px 5px 0 var(--ink);
+    max-width:220px;
+    transition:transform .15s ease, box-shadow .15s ease, opacity .3s ease;
+    cursor:default;
+  }
+  .floating-sticker:hover{
+    transform:rotate(0deg) translate(-2px,-2px);
+    box-shadow:8px 8px 0 var(--ink);
+  }
+  .floating-sticker .sticker-tag{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:9.5px;
+    letter-spacing:0.2em;
+    font-weight:700;
+    margin-bottom:8px;
+    color:var(--ink);
+  }
+  .floating-sticker .sticker-event{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:17px;
+    font-weight:600;
+    line-height:1.1;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .floating-sticker .sticker-meta{
+    font-size:11.5px;
+    margin-top:4px;
+    color:var(--ink);
+    opacity:0.75;
+  }
+  .floating-sticker .sticker-date{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:11px;
+    font-weight:700;
+    margin-top:8px;
+    background:var(--ink);
+    color:var(--paper);
+    display:inline-block;
+    padding:2px 8px;
+    border:0.5px solid var(--ink);
+  }
+  @media (max-width:680px){
+    .floating-sticker{bottom:16px;right:16px}
   }
   .sticker::before{
     content:"";
@@ -596,17 +773,17 @@
     transform:translateX(-50%) rotate(3deg);
     width:54px;height:14px;
     background:rgba(255,255,255,0.35);
-    border:1px solid rgba(0,0,0,0.25);
+    border:0.5px solid rgba(0,0,0,0.25);
   }
   .sticker-tag{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:9.5px;
     letter-spacing:0.2em;
     font-weight:700;
     margin-bottom:8px;
   }
   .sticker-event{
-    font-family:"Fraunces",serif;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:19px;
     font-weight:600;
     line-height:1.1;
@@ -614,7 +791,7 @@
   }
   .sticker-meta{font-size:11.5px;margin-top:4px;opacity:0.95}
   .sticker-date{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:11px;
     font-weight:700;
     margin-top:8px;
@@ -622,14 +799,14 @@
     color:var(--ink);
     display:inline-block;
     padding:2px 8px;
-    border:1.5px solid var(--ink);
+    border:0.5px solid var(--ink);
   }
 
   /* ── HEALTH STATS ── */
   .health-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    border:2.5px solid var(--ink);
+    border:0.5px solid var(--ink);
     background:var(--ink);
     gap:2px;
     box-shadow:5px 5px 0 var(--pop-pink);
@@ -637,15 +814,15 @@
   .health-stat{background:var(--paper);padding:12px 6px;text-align:center}
   .health-stat:nth-child(even){background:var(--pop-yellow)}
   .health-num{
-    font-family:"Fraunces",serif;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:26px;
     font-weight:600;
     color:var(--ink);
     line-height:1;
-    font-variation-settings:"opsz" 144;
+    
   }
   .health-label{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:8.5px;
     letter-spacing:0.1em;
     text-transform:uppercase;
@@ -663,7 +840,7 @@
     font-size:13.5px;
   }
   .race-table th{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:9.5px;
     letter-spacing:0.16em;
     text-transform:uppercase;
@@ -676,12 +853,12 @@
   }
   .race-table td{
     padding:12px;
-    border-bottom:1.5px solid var(--ink);
+    
     color:var(--ink-2);
     vertical-align:top;
   }
   .race-table td:first-child{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-weight:700;
     color:var(--ink);
     white-space:nowrap;
@@ -705,10 +882,10 @@
     background:var(--ink);
     color:var(--paper);
     text-decoration:none;
-    border:2.5px solid var(--ink);
+    border:0.5px solid var(--ink);
     box-shadow:6px 6px 0 var(--pop-pink);
     transition:transform .12s ease, box-shadow .12s ease;
-    font-family:"Instrument Sans",sans-serif;
+    font-family:"Bricolage Grotesque",sans-serif;
   }
   .hire-cta:hover{
     transform:translate(-2px,-2px);
@@ -716,24 +893,24 @@
     background:var(--pop-pink);
   }
   .hire-cta-tag{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:9.5px;
     letter-spacing:0.22em;
     font-weight:700;
     background:var(--pop-yellow);
     color:var(--ink);
     padding:2px 7px;
-    border:1.5px solid var(--paper);
+    border:0.5px solid var(--paper);
   }
   .hire-cta-label{
     flex:1;
-    font-family:"Fraunces",serif;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:17px;
     font-weight:500;
     letter-spacing:-0.005em;
   }
   .hire-cta-arrow{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:20px;
     font-weight:700;
     transition:transform .12s ease;
@@ -742,7 +919,7 @@
 
   /* ── KPI SINGLE COLUMN ── */
   .kpi-list{
-    border:2.5px solid var(--ink);
+    border:0.5px solid var(--ink);
     background:var(--paper);
     box-shadow:5px 5px 0 var(--pop-pink);
     margin-bottom:16px;
@@ -753,22 +930,22 @@
     justify-content:space-between;
     gap:14px;
     padding:12px 14px;
-    border-bottom:1.5px solid var(--ink);
+    
   }
   .kpi:last-child{border-bottom:none}
   .kpi:nth-child(even){background:var(--pop-yellow)}
   .kpi-num{
-    font-family:"Fraunces",serif;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:34px;
     font-weight:600;
     color:var(--ink);
     line-height:1;
-    font-variation-settings:"opsz" 144;
+    
     letter-spacing:-0.02em;
     min-width:52px;
   }
   .kpi-label{
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:11px;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -781,7 +958,7 @@
   .marquee{
     background:var(--ink);
     color:var(--pop-yellow);
-    border:2.5px solid var(--ink);
+    border:0.5px solid var(--ink);
     overflow:hidden;
     position:relative;
     margin-bottom:18px;
@@ -799,7 +976,7 @@
     align-items:center;
     gap:14px;
     padding-right:28px;
-    font-family:"JetBrains Mono",monospace;
+    font-family:"Bricolage Grotesque",sans-serif;
     font-size:12.5px;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -812,7 +989,7 @@
     padding:2px 8px;
     font-size:11px;
     letter-spacing:0.18em;
-    border:1.5px solid var(--paper);
+    border:0.5px solid var(--paper);
   }
   .marquee-dot{color:var(--pop-yellow);font-size:10px}
   @keyframes marquee-scroll{
@@ -822,6 +999,688 @@
   .marquee:hover .marquee-track{animation-play-state:paused}
   @media (prefers-reduced-motion:reduce){
     .marquee-track{animation:none}
+  }
+
+  /* ── RACES FULL WIDTH 2×3 ── */
+  .races-fullwidth{
+    margin-bottom:36px;
+  }
+  .kpi-grid-2x3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0.5px;
+    background:var(--ink);
+    border:0.5px solid var(--ink);
+    box-shadow:6px 6px 0 var(--pop-pink);
+  }
+  .kpi-card{
+    background:var(--paper);
+    padding:24px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    gap:8px;
+  }
+  .kpi-card:nth-child(even){background:var(--pop-yellow)}
+  .kpi-card .kpi-num{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:52px;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1;
+    
+    letter-spacing:-0.03em;
+  }
+  .kpi-card .kpi-label{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:10.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ink);
+    font-weight:700;
+  }
+
+  /* ── THINK BUBBLE ── */
+  .think-bubble{
+    position:relative;
+    display:inline-block;
+    background:var(--frame);
+    border:0.5px solid var(--ink);
+    border-radius:16px;
+    padding:22px 32px 24px;
+    font-family:"Bricolage Grotesque",sans-serif;
+    
+    font-size:20px;
+    line-height:1.35;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+    max-width:560px;
+    box-shadow:5px 5px 0 var(--pop-pink);
+    margin-bottom:28px;
+  }
+  .think-bubble em{
+    font-style:normal;
+    background:var(--pop-pink);
+    color:var(--paper);
+    padding:1px 8px;
+    font-weight:600;
+    border-radius:2px;
+  }
+  .think-bubble::after{
+    content:"";
+    position:absolute;
+    bottom:-18px;
+    left:44px;
+    width:14px;height:14px;
+    background:var(--frame);
+    border:0.5px solid var(--ink);
+    border-radius:50%;
+    box-shadow:2px 2px 0 var(--pop-pink);
+  }
+  .think-bubble::before{
+    content:"";
+    position:absolute;
+    bottom:-32px;
+    left:32px;
+    width:8px;height:8px;
+    background:var(--frame);
+    border:0.5px solid var(--ink);
+    border-radius:50%;
+    box-shadow:1px 1px 0 var(--pop-pink);
+  }
+  .think-bubble-wrap{
+    margin-top:20px;
+    padding-top:20px;
+    padding-bottom:8px;
+  }
+  .think-bubble-thinker{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:9.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ink-3);
+    font-weight:600;
+    margin-top:44px;
+  }
+
+  /* ── BLACK FOOTER ── */
+  .black-footer{
+    background:var(--pop-pink);
+    background-image:
+      repeating-linear-gradient(
+        -45deg,
+        rgba(255,255,255,0.04) 0px,
+        rgba(255,255,255,0.04) 1px,
+        transparent 1px,
+        transparent 12px
+      );
+    width:calc(100% + 96px);
+    margin-left:-48px;
+    margin-right:-48px;
+    margin-top:64px;
+    margin-bottom:-48px;
+    padding:56px 48px 64px;
+  }
+  .black-footer-inner{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:40px;
+    flex-wrap:wrap;
+  }
+  .footer-left{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .footer-race-badge{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:rgba(255,255,255,0.75);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .badge-dot{
+    color:var(--paper);
+    animation:blink 1.4s ease-in-out infinite;
+  }
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+  .sponsor-text{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:clamp(32px,5.5vw,80px);
+    font-weight:400;
+    
+    color:var(--paper);
+    line-height:1;
+    letter-spacing:-0.03em;
+    
+  }
+  .sponsor-sub{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:15px;
+    color:rgba(255,255,255,0.7);
+    
+    font-weight:400;
+    letter-spacing:-0.005em;
+  }
+  .footer-ctas{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:4px;
+  }
+  .footer-cta-btn{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:10px 18px;
+    border:0.5px solid var(--paper);
+    color:var(--paper);
+    background:transparent;
+    transition:background .15s, color .15s;
+    white-space:nowrap;
+  }
+  .footer-cta-btn:hover{
+    background:var(--paper);
+    color:var(--pop-pink);
+  }
+  .footer-cta-wa{
+    background:var(--paper);
+    color:var(--pop-pink);
+  }
+  .footer-cta-wa:hover{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+  .sponsor-counter{
+    text-align:right;
+    flex-shrink:0;
+  }
+  .counter-label{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:10px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.55);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .counter-num{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:clamp(28px,4vw,56px);
+    font-weight:600;
+    color:var(--ink);
+    line-height:1;
+    letter-spacing:-0.02em;
+    
+  }
+  @media (max-width:680px){
+    .black-footer{padding:40px 20px 48px}
+    .black-footer-inner{flex-direction:column;align-items:flex-start;gap:40px}
+    .sponsor-counter{text-align:left}
+  }
+
+  .entry-btn{
+    display:inline-block;
+    margin-top:12px;
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:9px 18px;
+    border:0.5px solid var(--ink);
+    background:var(--pop-pink);
+    color:var(--paper);
+    text-decoration:none;
+    transition:background .15s, color .15s;
+  }
+  .entry-btn:hover{
+    background:var(--ink);
+    color:var(--paper);
+  }
+
+  /* ── SPONSOR BANNER ── */
+  .sponsor-banner{
+    width:calc(100% + 96px);
+    margin-left:-48px;
+    margin-right:-48px;
+    margin-top:56px;
+    margin-bottom:56px;
+    background:var(--pop-yellow);
+    padding:24px 48px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+    min-height:0;
+  }
+  .sponsor-banner-head{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:clamp(36px,6vw,80px);
+    font-weight:800;
+    color:var(--ink);
+    text-align:left;
+    letter-spacing:-0.03em;
+    line-height:1;
+    flex-shrink:0;
+    text-decoration:none;
+    cursor:pointer;
+    transition:opacity .15s;
+    text-underline-offset:6px;
+  }
+  .sponsor-banner-head:hover{
+    opacity:1;
+    text-decoration:underline;
+    text-decoration-thickness:3px;
+  }
+  .sponsor-arrow{
+    display:inline-flex;
+    vertical-align:middle;
+    margin-left:4px;
+    transition:transform .15s;
+  }
+  .sponsor-arrow svg{
+    width:0.7em;
+    height:0.7em;
+    stroke:var(--ink);
+    stroke-width:2.5;
+  }
+  .sponsor-banner-head:hover .sponsor-arrow{
+    transform:translate(3px,-3px);
+  }
+  .sponsor-marquee{
+    overflow:hidden;
+    height:110px;
+    position:relative;
+    flex:1;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 22%,#000 78%,transparent 100%);
+    mask-image:linear-gradient(180deg,transparent 0%,#000 22%,#000 78%,transparent 100%);
+  }
+  .sponsor-marquee-track{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:10px;
+    animation:sm-scroll-v 18s linear infinite;
+  }
+  .sponsor-marquee:hover .sponsor-marquee-track{
+    animation-play-state:paused;
+  }
+  @keyframes sm-scroll-v{
+    0%{transform:translateY(0)}
+    100%{transform:translateY(-50%)}
+  }
+  .sm-item{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:clamp(13px,1.4vw,20px);
+    font-weight:700;
+    color:var(--ink);
+    letter-spacing:-0.015em;
+    white-space:nowrap;
+    text-align:right;
+    line-height:1.2;
+  }
+  .sm-dot{display:none}
+  @media (max-width:680px){
+    .sponsor-banner{
+      flex-direction:column;
+      align-items:flex-start;
+      padding:36px 20px;
+      gap:24px;
+      min-height:0;
+    }
+    .sponsor-marquee{width:100%;height:160px}
+    .sponsor-marquee-track{align-items:flex-start}
+    .sm-item{text-align:left}
+  }
+
+  /* ── RACE CALENDAR ── */
+  .race-calendar{
+    margin-top:48px;
+    margin-bottom:48px;
+  }
+  .rc-table-wrap{
+    overflow-x:auto;
+    border:0.5px solid var(--ink);
+    box-shadow:5px 5px 0 var(--ink);
+  }
+  .rc-table{
+    width:100%;
+    border-collapse:collapse;
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:13.5px;
+  }
+  .rc-table thead{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .rc-table th{
+    padding:13px 16px;
+    text-align:left;
+    font-size:10px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-weight:700;
+    white-space:nowrap;
+  }
+  .rc-table td{
+    padding:14px 16px;
+    color:var(--ink);
+    border-bottom:0.5px solid rgba(10,10,10,0.1);
+    vertical-align:middle;
+  }
+  .rc-table tr:last-child td{border-bottom:none}
+  .rc-table tbody tr:nth-child(even){background:var(--frame)}
+  .rc-table tbody tr:hover{background:var(--pop-yellow)}
+  .rc-event-name{font-weight:700;font-size:14px}
+  .rc-kms{
+    font-weight:700;
+    color:var(--pop-pink);
+  }
+  .rc-position{
+    display:inline-block;
+    background:var(--ink);
+    color:var(--paper);
+    font-size:10px;
+    font-weight:700;
+    padding:3px 10px;
+    letter-spacing:0.1em;
+  }
+  .rc-position.pending{
+    background:transparent;
+    color:var(--ink-3);
+    border:0.5px solid var(--ink-3);
+  }
+  .rc-btn{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:7px 14px;
+    border:0.5px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    white-space:nowrap;
+    transition:background .15s, color .15s;
+  }
+  .rc-btn:hover{background:var(--ink);color:var(--paper)}
+  .rc-pagination{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-top:16px;
+    justify-content:flex-end;
+  }
+  .rc-page-btn{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:11px;
+    font-weight:700;
+    width:32px;height:32px;
+    display:flex;align-items:center;justify-content:center;
+    border:0.5px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    transition:background .15s, color .15s;
+  }
+  .rc-page-btn:hover,.rc-page-btn.active{
+    background:var(--ink);
+    color:var(--paper);
+  }
+
+  /* ── RACE DETAIL MODAL ── */
+  .rc-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(10,10,10,0.7);
+    z-index:300;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .2s, visibility .2s;
+  }
+  .rc-modal.open{opacity:1;visibility:visible}
+  .rc-modal-box{
+    background:var(--paper);
+    border:0.5px solid var(--ink);
+    box-shadow:8px 8px 0 var(--ink);
+    max-width:700px;
+    width:100%;
+    max-height:90vh;
+    overflow-y:auto;
+    position:relative;
+  }
+  .rc-modal-close{
+    position:absolute;
+    top:14px;right:14px;
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:14px;
+    font-weight:700;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    width:32px;height:32px;
+    cursor:pointer;
+    z-index:1;
+  }
+  .rc-m-title{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:22px;
+    font-weight:800;
+    color:var(--ink);
+    padding:24px 24px 16px;
+    letter-spacing:-0.02em;
+  }
+  .rc-m-imgs{
+    position:relative;
+    aspect-ratio:16/9;
+    background:var(--frame);
+    overflow:hidden;
+  }
+  .rc-m-img{
+    position:absolute;
+    inset:0;
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;
+    transition:opacity .5s ease;
+  }
+  .rc-m-img.active{opacity:1}
+  .rc-m-img::after{
+    content:"No photo";
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:10px;
+    color:var(--ink-3);
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    position:absolute;
+  }
+  .rc-m-img img{
+    width:100%;height:100%;
+    object-fit:cover;
+    position:relative;
+    z-index:1;
+  }
+  .rc-m-dots{
+    position:absolute;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:6px;
+    z-index:2;
+  }
+  .rc-m-dot{
+    width:24px;height:24px;
+    border-radius:2px;
+    background:rgba(0,0,0,0.45);
+    color:rgba(255,255,255,0.7);
+    border:0.5px solid rgba(255,255,255,0.4);
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:10px;
+    font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition:background .2s, color .2s;
+  }
+  .rc-m-dot.active{
+    background:#fff;
+    color:var(--ink);
+    border-color:#fff;
+  }
+  .rc-m-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:2;
+    background:rgba(0,0,0,0.5);
+    color:#fff;
+    border:none;
+    width:36px;height:36px;
+    font-size:16px;
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-weight:700;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .15s;
+  }
+  .rc-m-arrow:hover{background:rgba(0,0,0,0.85)}
+  .rc-m-arrow-left{left:10px}
+  .rc-m-arrow-right{right:10px}
+  .rc-m-body{
+    padding:20px 24px 24px;
+  }
+  .rc-m-desc{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:14px;
+    line-height:1.7;
+    color:var(--ink);
+    margin-bottom:20px;
+  }
+  .rc-m-meta{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    background:var(--pop-yellow);
+    padding:12px 16px;
+  }
+  .rc-m-label{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:10px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--ink-3);
+  }
+  .rc-m-completed{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:20px;
+    font-weight:800;
+    color:var(--ink);
+    letter-spacing:-0.02em;
+  }
+  @media (max-width:560px){
+    .rc-m-imgs{grid-template-columns:1fr}
+  }
+
+  /* ── BIKE TABS ── */
+  .bike-tabs{}
+  .bike-tab-btns{
+    display:flex;
+    gap:0;
+    margin-bottom:12px;
+  }
+  .bike-tab-btn{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:8px 14px;
+    border:0.5px solid var(--ink);
+    background:transparent;
+    color:var(--ink-3);
+    cursor:pointer;
+    transition:background .15s, color .15s;
+    flex:1;
+  }
+  .bike-tab-btn:first-child{border-right:none}
+  .bike-tab-btn.active{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .bike-tab-panel{
+    display:none;
+    overflow-y:auto;
+    max-height:320px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .bike-tab-panel:not(.active){
+    display:none!important;
+  }
+  .bike-card{
+    border:0.5px solid var(--ink);
+    overflow:hidden;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .bike-card-photo{
+    width:100%;
+    aspect-ratio:1/1;
+    background:var(--frame);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .bike-card-photo::after{
+    content:"No photo yet";
+    position:absolute;
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:11px;
+    color:var(--ink-3);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+  .bike-card-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    position:relative;
+    z-index:1;
+  }
+  .bike-card-name{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:14px;
+    font-weight:700;
+    color:var(--ink);
+    padding:10px 12px 2px;
+  }
+  .bike-card-date{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:10.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-3);
+    padding:0 12px 10px;
   }
 
   @media print{
@@ -835,83 +1694,90 @@
   }
 
 </style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 <div class="page">
 
-  <div class="road-stripe"></div>
 
-  <header>
-    <div>
-      <h1>Avishek <em>Nayak</em></h1>
-      <div class="tagline">
-        Indian Cyclist <span>·</span> Triathlete <span>·</span> Community Builder <span>·</span> Sports Nutrition
+  <div class="hero-section">
+
+    <header>
+      <div class="header-left">
+        <h1>Avishek <em>Nayak</em></h1>
+        <p class="header-sub">An underdog cyclist and a wannabe superhuman.</p>
       </div>
+      <div class="tagline-stack">
+        <div class="tag-item" data-id="cyclist">
+          <span class="tag-word">Indian Cyclist</span>
+        </div>
+        <div class="tag-item" data-id="triathlete">
+          <span class="tag-word">Triathlete</span>
+        </div>
+        <div class="tag-item" data-id="community">
+          <span class="tag-word">Community Builder</span>
+        </div>
+        <div class="tag-item" data-id="nutrition">
+          <span class="tag-word">Sports Nutrition</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ HERO IMAGE ═══ -->
+    <div class="hero-img">
+      <img src="photo.jpeg" alt="Avishek Nayak riding his dream bike">
     </div>
+
     <div class="header-btns">
       <a class="story-btn" href="#story" id="story-trigger">Read my story <span class="arrow">→</span></a>
       <a class="story-btn" href="#races" id="races-trigger">View my calendar <span class="arrow">→</span></a>
     </div>
 
-    <div class="contact">
-      <span>INDIA</span>
-      <span class="dot">●</span>
-      <a href="mailto:workdesk.avishek@gmail.com">workdesk.avishek@gmail.com</a>
-      <span class="dot">●</span>
-      <a class="mini-btn" href="https://www.google.com/search?tbm=isch&q=Avishek+Nayak+Cyclist+Endurance" target="_blank" rel="noopener">Google me →</a>
-      <span class="dot">●</span>
-      <a href="https://www.strava.com/athletes/85283746" target="_blank" rel="noopener">strava</a>
+  </div>
+
+  <!-- ═══ RACES TILL NOW ═══ -->
+  <section class="races-fullwidth">
+    <h2 class="sec-title"><span>Races Till Now</span></h2>
+    <div class="kpi-grid-2x3">
+      <div class="kpi-card"><div class="kpi-num">3</div><div class="kpi-label">BRMs</div></div>
+      <div class="kpi-card"><div class="kpi-num">1</div><div class="kpi-label">ITT Race</div></div>
+      <div class="kpi-card"><div class="kpi-num">1</div><div class="kpi-label">Podium Finish</div></div>
+      <div class="kpi-card"><div class="kpi-num">9</div><div class="kpi-label">Half Marathons</div></div>
+      <div class="kpi-card"><div class="kpi-num">1</div><div class="kpi-label">Full Marathon</div></div>
+      <div class="kpi-card"><div class="kpi-num">0</div><div class="kpi-label">Triathlons</div></div>
     </div>
-  </header>
-
-  <!-- ═══ MARQUEE ═══ -->
-  <div class="marquee" aria-label="Current race: Pune to Mahabaleshwar, 190km on Aug 22, 2026">
-    <div class="marquee-track">
-      <span class="marquee-item"><span class="marquee-tag">Current race</span> Pune → Mahabaleshwar <span class="marquee-dot">◆</span> 190 km · Tamhini + Ambenali Ghats <span class="marquee-dot">◆</span> Aug 22, 2026 <span class="marquee-dot">◆</span></span>
-      <span class="marquee-item"><span class="marquee-tag">Current race</span> Pune → Mahabaleshwar <span class="marquee-dot">◆</span> 190 km · Tamhini + Ambenali Ghats <span class="marquee-dot">◆</span> Aug 22, 2026 <span class="marquee-dot">◆</span></span>
-      <span class="marquee-item" aria-hidden="true"><span class="marquee-tag">Current race</span> Pune → Mahabaleshwar <span class="marquee-dot">◆</span> 190 km · Tamhini + Ambenali Ghats <span class="marquee-dot">◆</span> Aug 22, 2026 <span class="marquee-dot">◆</span></span>
-      <span class="marquee-item" aria-hidden="true"><span class="marquee-tag">Current race</span> Pune → Mahabaleshwar <span class="marquee-dot">◆</span> 190 km · Tamhini + Ambenali Ghats <span class="marquee-dot">◆</span> Aug 22, 2026 <span class="marquee-dot">◆</span></span>
-    </div>
-  </div>
-
-  <!-- ═══ HERO IMAGE ═══ -->
-  <div class="hero-img">
-    <img src="photo.jpeg" alt="Avishek Nayak riding his dream bike">
-  </div>
-
-  <div class="summary sticky-note">
-    Passion for the <em>wheels &amp; endurance</em>, profession of a <em>UX Designer</em> — and I keep balancing both to sustain a life I actually want.
-  </div>
+  </section>
 
   <div class="grid">
 
     <aside>
 
       <section>
-        <h2 class="sec-title"><span>Athletic</span><span class="num">02</span></h2>
-        <div class="kpi-list">
-          <div class="kpi"><div class="kpi-num">3</div><div class="kpi-label">BRMs</div></div>
-          <div class="kpi"><div class="kpi-num">1</div><div class="kpi-label">ITT Race</div></div>
-          <div class="kpi"><div class="kpi-num">1</div><div class="kpi-label">Podium finish</div></div>
-          <div class="kpi"><div class="kpi-num">9</div><div class="kpi-label">Half Marathons</div></div>
-          <div class="kpi"><div class="kpi-num">1</div><div class="kpi-label">Full Marathon</div></div>
-          <div class="kpi"><div class="kpi-num">0</div><div class="kpi-label">Races</div></div>
-        </div>
+        <div class="bike-tabs">
+          <div class="bike-tab-btns">
+            <button class="bike-tab-btn active" data-tab="current">Currently Using</button>
+            <button class="bike-tab-btn" data-tab="retired">Retired</button>
+          </div>
 
-        <div class="sticker">
-          <div class="sticker-tag">● NOW RACING</div>
-          <div class="sticker-event">Pune → Mahabaleshwar</div>
-          <div class="sticker-meta">190 km · Tamhini + Ambenali Ghats</div>
-          <div class="sticker-date">Aug 22, 2026</div>
-        </div>
+          <div class="bike-tab-panel active" id="tab-current">
+            <div class="bike-card">
+              <div class="bike-card-photo">
+                <img src="merida.jpg" alt="Merida Reacto 4000" onerror="this.style.display='none'">
+              </div>
+              <div class="bike-card-name">Merida Reacto 4000</div>
+              <div class="bike-card-date">2022 – Present</div>
+            </div>
+          </div>
 
-        <div class="quick-fact">
-          <div class="quick-fact-label">Current bike</div>
-          <div class="quick-fact-val">Merida Reacto 4000</div>
-        </div>
-        <div class="quick-fact">
-          <div class="quick-fact-label">First road build</div>
-          <div class="quick-fact-val">Bergamont hybrid</div>
+          <div class="bike-tab-panel" id="tab-retired">
+            <div class="bike-card">
+              <div class="bike-card-photo">
+                <img src="bergamont.jpg" alt="Bergamont Hybrid" onerror="this.style.display='none'">
+              </div>
+              <div class="bike-card-name">Bergamont Hybrid</div>
+              <div class="bike-card-date">2019 – 2022</div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -920,53 +1786,17 @@
     <main>
 
       <section>
-        <h2 class="sec-title"><span>Passion to Paisa</span><span class="num">05</span></h2>
+        <h2 class="sec-title"><span>Passion to Paisa</span></h2>
 
         <div class="entry">
           <div class="entry-head">
-            <div class="entry-title">T-90 Calculator · <a href="https://t-90.club" target="_blank" rel="noopener" style="color:var(--pop-pink);text-decoration:none;border-bottom:2px solid var(--pop-pink)">t-90.club ↗</a></div>
+            <div class="entry-title"><a href="https://t-90.club" target="_blank" rel="noopener" style="color:var(--pop-pink);text-decoration:none;">t-90.club ↗</a></div>
             <div class="entry-meta">live</div>
           </div>
-          <div class="entry-sub">Built it · ship it · maintain it</div>
           <ul>
-            <li>Lets athletes <strong>track their progress</strong> without expensive trackers or devices</li>
-            <li>Free, web-based — built for riders &amp; runners who can't justify a Garmin yet</li>
+            <li>Use the calculator to <strong>understand your body</strong>. Practice in mini challenges and compete with your own alter ego.</li>
           </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <div class="entry-title">Ironman Goa · Volunteer</div>
-            <div class="entry-meta">Nov 2025</div>
-          </div>
-          <div class="entry-sub">Transition Point Co-coordinator</div>
-          <ul>
-            <li>Kept athletes <strong>mentally locked in</strong> through the transition — focus, motivation, energy on the floor</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <div class="entry-title">Cycle &amp; Chai Club · Baroda</div>
-            <div class="entry-meta">2021 – present</div>
-          </div>
-          <div class="entry-sub">Member</div>
-          <ul>
-            <li><strong>200+ members</strong> · 50+ active riders · runs everyday</li>
-            <li>My focus: <strong>long structured rides</strong> to push performance</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <div class="entry-title">Bengaluru Cycling Group · BBCH</div>
-            <div class="entry-meta">2023 – 2024</div>
-          </div>
-          <div class="entry-sub">Rider</div>
-          <ul>
-            <li>Structured riding with the group · learned how they <strong>grow community</strong> and organise events</li>
-            <li>Attended talks by <strong>Shreenath Laxmikanth</strong> (Indian cyclist)</li>
-          </ul>
+          <a class="entry-btn" href="https://t-90.club" target="_blank" rel="noopener">Join the waitlist →</a>
         </div>
 
         <div class="entry">
@@ -974,47 +1804,119 @@
             <div class="entry-title">Sports Nutrition Coaching</div>
             <div class="entry-meta">3 months</div>
           </div>
-          <div class="entry-sub">Certified Sports Nutritionist · Herbalife-backed</div>
+          <div class="entry-sub">Sports Nutritionist from IISDT</div>
           <ul>
-            <li><strong>5 paid clients</strong> — first 5K runners, 50km cyclothon riders, athletes building muscle &amp; endurance for intense endurance sports</li>
-            <li>Earned the cert to learn nutrition for athletes, then turned around and guide others through it</li>
+            <li>From your <strong>first 5K</strong> to completing the marathon, or want to build <strong>endurance for the body</strong> — we got you covered.</li>
           </ul>
+          <a class="entry-btn" href="mailto:workdesk.avishek@gmail.com">Connect with me →</a>
         </div>
 
-      </section>
-
-      <section>
-        <h2 class="sec-title"><span>Professional experience</span><span class="num">06</span></h2>
-
-        <div class="entry">
-          <div class="entry-head">
-            <div class="entry-title">Senior UX Designer</div>
-            <div class="entry-meta">1.3 yrs · now</div>
-          </div>
-          <div class="entry-sub">7Span</div>
-        </div>
-
-        <a class="hire-cta" href="https://avisheknayak.vercel.app/" target="_blank" rel="noopener">
-          <span class="hire-cta-tag">CTA</span>
-          <span class="hire-cta-label">Hire me as a Designer !!</span>
-          <span class="hire-cta-arrow">→</span>
-        </a>
       </section>
 
     </main>
   </div>
 
-  <footer>
-    <div class="footer-kicker">
-      Participating in the <em>Tour de France</em> one day.
+  <!-- ═══ SPONSOR BANNER ═══ -->
+  <section class="sponsor-banner">
+    <a class="sponsor-banner-head" href="https://forms.gle/XXXXXXXXXXXXXX" target="_blank" rel="noopener">Sponsor me. <span class="sponsor-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 5 19 5 19 11"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span></a>
+    <div class="sponsor-marquee">
+      <div class="sponsor-marquee-track">
+        <span class="sm-item">Jersey Sponsor</span>
+        <span class="sm-item">Kit Sponsor</span>
+        <span class="sm-item">Race Sponsor</span>
+        <span class="sm-item">Bike Fits</span>
+        <span class="sm-item">Maintenance</span>
+        <span class="sm-item">Nutrition Sponsor</span>
+        <span class="sm-item" aria-hidden="true">Jersey Sponsor</span>
+        <span class="sm-item" aria-hidden="true">Kit Sponsor</span>
+        <span class="sm-item" aria-hidden="true">Race Sponsor</span>
+        <span class="sm-item" aria-hidden="true">Bike Fits</span>
+        <span class="sm-item" aria-hidden="true">Maintenance</span>
+        <span class="sm-item" aria-hidden="true">Nutrition Sponsor</span>
+      </div>
     </div>
-    <div class="footer-meta">
-      <span>Avishek Nayak · 2026</span>
-      <span class="v">v1.1 · draft</span>
+  </section>
+
+  <!-- ═══ RACE CALENDAR ═══ -->
+  <section class="race-calendar">
+    <h2 class="sec-title"><span>Race Calendar 2025–26</span></h2>
+
+    <div class="rc-table-wrap">
+      <table class="rc-table" id="rc-table">
+        <thead>
+          <tr>
+            <th>Event Name</th>
+            <th>Race KMs</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Position</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="rc-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="rc-pagination" id="rc-pagination"></div>
+  </section>
+
+  <footer>
+    <div class="think-bubble-wrap">
+      <div class="think-bubble">
+        One day, I ride in the <em>Tour de France</em>. I don't know how yet — but I will.
+      </div>
     </div>
   </footer>
 
 </div>
+
+<!-- ═══ BLACK FOOTER ═══ -->
+<div class="black-footer">
+  <div class="black-footer-inner">
+
+    <div class="footer-left">
+      <div class="sponsor-counter" style="text-align:left;margin-bottom:12px;">
+        <div class="counter-label">Spent so far on racing</div>
+        <div class="counter-num">₹<span id="race-counter">0</span></div>
+      </div>
+      <div class="sponsor-text">Sponsor me for my next race.</div>
+      <div class="sponsor-sub">Every rupee goes into race entry, gear, or fuel.</div>
+      <div class="footer-ctas">
+        <a class="footer-cta-btn" href="mailto:workdesk.avishek@gmail.com">Email me →</a>
+        <a class="footer-cta-btn footer-cta-wa" href="https://wa.me/918260646662" target="_blank" rel="noopener">WhatsApp →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ FLOATING STICKER ═══ -->
+<div class="floating-sticker">
+  <div class="sticker-tag">● NOW RACING</div>
+  <div class="sticker-event">Pune → Mahabaleshwar</div>
+  <div class="sticker-meta">190 km · Tamhini + Ambenali Ghats</div>
+  <div class="sticker-date">Aug 22, 2026</div>
+</div>
+
+  <!-- ═══ RACE DETAIL MODAL ═══ -->
+  <div class="rc-modal" id="rc-modal">
+    <div class="rc-modal-box">
+      <button class="rc-modal-close" id="rc-modal-close">✕</button>
+      <div class="rc-m-title" id="rc-m-title"></div>
+      <div class="rc-m-imgs" id="rc-m-imgs">
+        <button class="rc-m-arrow rc-m-arrow-left" id="rc-m-prev">←</button>
+        <button class="rc-m-arrow rc-m-arrow-right" id="rc-m-next">→</button>
+        <div class="rc-m-dots" id="rc-m-dots"></div>
+      </div>
+      <div class="rc-m-body">
+        <p class="rc-m-desc" id="rc-m-desc"></p>
+        <div class="rc-m-meta">
+          <span class="rc-m-label">Completed in</span>
+          <span class="rc-m-completed" id="rc-m-completed"></span>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <!-- ═══ STORY OVERLAY ═══ -->
 <aside class="story-overlay" id="story-overlay" aria-hidden="true" aria-labelledby="story-hook">
@@ -1185,6 +2087,111 @@
 </aside>
 
 
+<!-- ═══ IDENTITY OVERLAY ═══ -->
+<div class="id-overlay" id="id-overlay">
+  <div class="id-overlay-inner">
+    <div class="id-overlay-label" id="id-overlay-label"></div>
+    <div class="id-overlay-title" id="id-overlay-title"></div>
+    <div class="id-overlay-body" id="id-overlay-body"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const content = {
+    cyclist: {
+      label: "",
+      title: "Indian Cyclist",
+      body: `I started on a <strong>₹10 brake pad and a spanner in my school bag</strong>. That was enough to know this was mine forever.
+<br><br>Five years on the road. From a Bergamont hybrid to a <strong>Merida Reacto 4000</strong> — every rupee of that upgrade was earned through the grind.
+<br><br>I've done <strong>3 BRMs</strong>, an <strong>ITT race</strong>, podiumed my first competitive start. I moved to Bangalore to live inside the cycling culture. I train on the streets of Ahmedabad when I can't be anywhere else.
+<br><br>Right now I'm building toward <strong>Pune → Mahabaleshwar, 190 km</strong> on Aug 22, 2026 — two ghats, full commitment.
+<br><br>The goal further out: the <strong>Tour de France</strong>. I don't know how yet. But I will.`
+    },
+    triathlete: {
+      label: "",
+      title: "Triathlete",
+      body: `Swim. Bike. Run. Three disciplines, one obsession.
+<br><br>I added running during the hardest year of my life — when I was laid off and the world felt smaller. <strong>Nine half-marathons</strong> since then. One <strong>full marathon in Mumbai</strong>. Each one a proof point that I was still moving.
+<br><br>In <strong>November 2025</strong>, I volunteered at Ironman Goa as a Transition Point Co-coordinator — keeping athletes mentally locked in through the hardest moments of the race.
+<br><br>That day I made a decision: I'm not just watching. I'm racing.
+<br><br>Target: <strong>Ironman Goa 70.3, 2027</strong>. Everything I'm doing right now — every early morning, every long ride, every nutrition call — is building toward that finish line.`
+    },
+    community: {
+      label: "",
+      title: "Community Builder",
+      body: `Cycling in India doesn't have the infrastructure it deserves. So we build it ourselves.
+<br><br>I'm an <strong>IxDF Local Leader in Ahmedabad</strong> — running events that bring designers and thinkers together. On June 27, 2025, we ran a UX brainstorming session in Bodakdev for designers with 1+ year of experience.
+<br><br>In Baroda, I'm part of <strong>Cycle & Chai Club</strong> — <strong>200+ members</strong>, 50+ active riders, running every day. My focus: long structured rides that push performance, not just participation.
+<br><br>In Bangalore, I rode with <strong>BBCH</strong>, attended talks by Shreenath Laxmikanth, and learned how serious cycling communities organize themselves.
+<br><br>The long-term vision: a cycling business empire — bike shop, private events, sponsorships. Community first. Revenue follows.`
+    },
+    nutrition: {
+      label: "",
+      title: "Sports Nutrition",
+      body: `I didn't get the cert to put it on a resume. I got it because I needed to understand <strong>how the body works under load</strong>.
+<br><br>Endurance sport in India's heat is a completely different problem. Hydration, electrolytes, carb timing, fueling on the bike — none of it is straightforward when you're doing 150+ km in 38°C.
+<br><br>I learned it, applied it to myself, then started coaching others. <strong>5 paid clients</strong> — first 5K runners, 50 km cyclothon riders, athletes building muscle and endurance for intense sport.
+<br><br>I'm Herbalife-certified, but the real education was trial, error, and kilometres.
+<br><br>I now run <strong>Wannabe Superhuman</strong> — a content brand at the intersection of cycling, nutrition, and the underdog athlete mindset.`
+    }
+  };
+
+  const overlay = document.getElementById('id-overlay');
+  const labelEl = document.getElementById('id-overlay-label');
+  const titleEl = document.getElementById('id-overlay-title');
+  const bodyEl  = document.getElementById('id-overlay-body');
+  let locked = false;
+
+  function show(id){
+    const c = content[id];
+    if(!c) return;
+    labelEl.textContent = c.label;
+    titleEl.textContent = c.title;
+    bodyEl.innerHTML = c.body;
+    overlay.classList.add('active');
+  }
+  function hide(){
+    overlay.classList.remove('active');
+  }
+
+  document.querySelectorAll('.tag-item[data-id]').forEach(item => {
+    const id = item.dataset.id;
+
+    item.addEventListener('mouseenter', () => {
+      if(locked) return;
+      show(id);
+    });
+    item.addEventListener('mouseleave', () => {
+      if(locked) return;
+      hide();
+    });
+
+    // click locks it open
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      show(id);
+      locked = true;
+    });
+  });
+
+  // click anywhere closes a locked overlay
+  document.addEventListener('click', () => {
+    if(locked){
+      locked = false;
+      hide();
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && locked){
+      locked = false;
+      hide();
+    }
+  });
+})();
+
+</script>
+
 <script>
 (function(){
   function wireOverlay(overlayId, triggerId, closeId, hash){
@@ -1192,7 +2199,6 @@
     const trigger = document.getElementById(triggerId);
     const closeBtn = document.getElementById(closeId);
     if(!overlay || !trigger || !closeBtn) return;
-
     function open(e){
       if(e) e.preventDefault();
       overlay.classList.add('open');
@@ -1207,25 +2213,201 @@
       document.body.classList.remove('story-open');
       trigger.focus();
     }
-
     trigger.addEventListener('click', open);
     closeBtn.addEventListener('click', close);
     document.addEventListener('keydown', e => {
       if(e.key === 'Escape' && overlay.classList.contains('open')) close();
     });
-
     if(hash){
       if(window.location.hash === hash) open();
-      window.addEventListener('hashchange', () => {
-        if(window.location.hash === hash) open();
-      });
+      window.addEventListener('hashchange', () => { if(window.location.hash === hash) open(); });
     }
   }
-
   wireOverlay('story-overlay', 'story-trigger', 'story-close', '#story');
   wireOverlay('races-overlay', 'races-trigger', 'races-close', '#races');
 })();
+</script>
 
+<script>
+// Floating sticker hide on footer
+(function(){
+  window.addEventListener('load', () => {
+    if(typeof lucide !== 'undefined') lucide.createIcons();
+  });
+  const sticker = document.querySelector('.floating-sticker');
+  const footer  = document.querySelector('.black-footer');
+  if(!sticker || !footer) return;
+  const obs = new IntersectionObserver(entries => {
+    sticker.style.opacity    = entries[0].isIntersecting ? '0' : '1';
+    sticker.style.pointerEvents = entries[0].isIntersecting ? 'none' : 'auto';
+  }, { threshold: 0.1 });
+  obs.observe(footer);
+})();
+document.querySelectorAll('.bike-tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.bike-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.bike-tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+  });
+});
+
+// Race Calendar
+(function(){
+  const races = [
+    { name:"Pune → Mahabaleshwar",    kms:"190",  date:"Aug 22, 2026", location:"Pune, MH",      position:"Upcoming", completedIn:"—", desc:"190km climb across Tamhini and Ambenali Ghats. My biggest ride yet. Still training for it.", imgs:["race1a.jpg","race1b.jpg","race1c.jpg"] },
+    { name:"BRM 200 Baroda",          kms:"200",  date:"Mar 10, 2025", location:"Vadodara, GJ",  position:"Finisher", completedIn:"9h 42m", desc:"My second BRM. Night start, solo most of the route. Learned to pace on flats.", imgs:["race2a.jpg","race2b.jpg","race2c.jpg"] },
+    { name:"BRM 300 Ahmedabad",       kms:"300",  date:"Dec 08, 2024", location:"Ahmedabad, GJ", position:"Finisher", completedIn:"14h 18m", desc:"Toughest ride so far. Finished just before cutoff. Nutrition was the game changer.", imgs:["race3a.jpg","race3b.jpg","race3c.jpg"] },
+    { name:"ITT Race Vadodara",       kms:"40",   date:"Oct 15, 2024", location:"Vadodara, GJ",  position:"1st", completedIn:"1h 04m", desc:"First podium. Time trial format — just me, the road, and a clock. Won it.", imgs:["race4a.jpg","race4b.jpg","race4c.jpg"] },
+    { name:"BRM 100 Baroda",          kms:"100",  date:"Aug 04, 2024", location:"Vadodara, GJ",  position:"Finisher", completedIn:"4h 51m", desc:"First BRM. Rode with the Cycle & Chai group. Hot day, strong legs.", imgs:["race5a.jpg","race5b.jpg","race5c.jpg"] },
+    { name:"Mumbai Marathon",         kms:"42.2", date:"Jan 19, 2025", location:"Mumbai, MH",    position:"Finisher", completedIn:"4h 33m", desc:"First full marathon. Trained 12 weeks. Cramped at 38km. Still finished.", imgs:["race6a.jpg","race6b.jpg","race6c.jpg"] },
+    { name:"Ahmedabad Half Marathon", kms:"21.1", date:"Nov 17, 2024", location:"Ahmedabad, GJ", position:"Finisher", completedIn:"2h 07m", desc:"One of 9 half marathons. Paced well, negative split in the second half.", imgs:["race7a.jpg","race7b.jpg","race7c.jpg"] },
+    { name:"Cyclothon Baroda 50K",    kms:"50",   date:"Feb 23, 2025", location:"Vadodara, GJ",  position:"Top 10", completedIn:"2h 12m", desc:"Fast group ride. Stayed in the peloton till the final 5km, then pushed hard.", imgs:["race8a.jpg","race8b.jpg","race8c.jpg"] },
+    { name:"Ironman Goa",             kms:"—",    date:"Nov 2027",     location:"Goa",           position:"Upcoming", completedIn:"—", desc:"The big one. 3.8km swim · 180km bike · 42.2km run. Everything I'm building toward.", imgs:["race9a.jpg","race9b.jpg","race9c.jpg"] },
+    { name:"Surat Cycling Criterium", kms:"60",   date:"Sep 14, 2024", location:"Surat, GJ",     position:"Finisher", completedIn:"2h 28m", desc:"Criterium format. Multiple laps, fast pack. First time racing in a bunch sprint.", imgs:["race10a.jpg","race10b.jpg","race10c.jpg"] },
+  ];
+
+  const PER_PAGE = 5;
+  let page = 1;
+  const tbody = document.getElementById('rc-tbody');
+  const pag   = document.getElementById('rc-pagination');
+  const total = Math.ceil(races.length / PER_PAGE);
+
+  // Modal
+  const modal     = document.getElementById('rc-modal');
+  const modalClose= document.getElementById('rc-modal-close');
+  const mTitle    = document.getElementById('rc-m-title');
+  const mImgs     = document.getElementById('rc-m-imgs');
+  const mDesc     = document.getElementById('rc-m-desc');
+  const mCompleted= document.getElementById('rc-m-completed');
+
+  let carouselTimer = null;
+
+  function openModal(r){
+    mTitle.textContent = r.name;
+    mDesc.textContent  = r.desc;
+    mCompleted.textContent = r.completedIn;
+
+    const dotsEl = document.getElementById('rc-m-dots');
+    const prevBtn = document.getElementById('rc-m-prev');
+    const nextBtn = document.getElementById('rc-m-next');
+
+    [...mImgs.children].forEach(c => {
+      if(!c.classList.contains('rc-m-dots') && !c.classList.contains('rc-m-arrow')) c.remove();
+    });
+    dotsEl.innerHTML = '';
+
+    r.imgs.forEach((src, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'rc-m-img' + (i===0?' active':'');
+      slide.innerHTML = `<img src="${src}" alt="${r.name}" onerror="this.style.display='none'">`;
+      mImgs.insertBefore(slide, prevBtn);
+
+      const dot = document.createElement('div');
+      dot.className = 'rc-m-dot' + (i===0?' active':'');
+      dot.textContent = i + 1;
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    });
+
+    const slides = mImgs.querySelectorAll('.rc-m-img');
+    const dots   = dotsEl.querySelectorAll('.rc-m-dot');
+    let cur = 0;
+
+    function goTo(n){
+      slides[cur].classList.remove('active');
+      dots[cur].classList.remove('active');
+      cur = (n + slides.length) % slides.length;
+      slides[cur].classList.add('active');
+      dots[cur].classList.add('active');
+      clearInterval(carouselTimer);
+      carouselTimer = setInterval(() => goTo(cur + 1), 3000);
+    }
+
+    prevBtn.onclick = () => goTo(cur - 1);
+    nextBtn.onclick = () => goTo(cur + 1);
+
+    clearInterval(carouselTimer);
+    carouselTimer = setInterval(() => goTo(cur + 1), 3000);
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    clearInterval(carouselTimer);
+  }
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+  function isPending(pos){ return pos === 'Upcoming' || pos === '—'; }
+
+  function render(){
+    const start = (page-1)*PER_PAGE;
+    const slice = races.slice(start, start+PER_PAGE);
+    tbody.innerHTML = slice.map((r,i) => `
+      <tr>
+        <td><div class="rc-event-name">${r.name}</div></td>
+        <td><span class="rc-kms">${r.kms} km</span></td>
+        <td>${r.date}</td>
+        <td>${r.location}</td>
+        <td><span class="rc-position${isPending(r.position)?' pending':''}">${r.position}</span></td>
+        <td><button class="rc-btn" data-idx="${start+i}">View Details →</button></td>
+      </tr>`).join('');
+
+    tbody.querySelectorAll('.rc-btn').forEach(btn => {
+      btn.addEventListener('click', () => openModal(races[+btn.dataset.idx]));
+    });
+
+    pag.innerHTML = '';
+    for(let i=1;i<=total;i++){
+      const btn = document.createElement('button');
+      btn.className = 'rc-page-btn' + (i===page?' active':'');
+      btn.textContent = i;
+      btn.addEventListener('click',()=>{ page=i; render(); });
+      pag.appendChild(btn);
+    }
+  }
+
+  render();
+})();
+</script>
+</script>
+
+<script>
+(function(){
+  const el = document.getElementById('race-counter');
+  if(!el) return;
+  const target = 500000;
+  const duration = 2800;
+  let startTime = null;
+
+  function easeInOutQuart(t){
+    return t < 0.5 ? 8*t*t*t*t : 1 - Math.pow(-2*t+2, 4)/2;
+  }
+
+  function animate(ts){
+    if(!startTime) startTime = ts;
+    const elapsed = ts - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = easeInOutQuart(progress);
+    el.textContent = Math.floor(eased * target).toLocaleString('en-IN');
+    if(progress < 1) requestAnimationFrame(animate);
+    else el.textContent = target.toLocaleString('en-IN');
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting){
+      observer.disconnect();
+      requestAnimationFrame(animate);
+    }
+  }, { threshold: 0.3 });
+
+  observer.observe(el);
+})();
 </script>
 </body>
 </html>
