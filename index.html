@@ -67,38 +67,69 @@
     font-weight:400;
   }
 
-  /* ── TAGLINE STACK ── */
-  .tagline-stack{
+  /* ── TAGLINE CAROUSEL ── */
+  .tagline-carousel{
     display:flex;
-    flex-direction:column;
-    align-items:flex-end;
-    gap:0;
+    align-items:center;
+    gap:8px;
+  }
+  .tc-arrow{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:14px;
+    font-weight:700;
+    width:30px;height:30px;
+    flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    border:0.5px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    transition:background .15s, color .15s;
+  }
+  .tc-arrow:hover{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .tc-viewport{
+    overflow:hidden;
+    width:190px;
+    flex-shrink:0;
+  }
+  .tc-track{
+    display:flex;
+    transition:transform .3s ease;
   }
   .tag-item{
+    flex:0 0 190px;
     position:relative;
     cursor:pointer;
-    padding:6px 4px;
+    padding:8px 6px;
     border-radius:4px;
     transition:background .15s;
+    text-align:center;
   }
   .tag-item:hover{
-    background:rgba(255,29,110,0.08);
+    background:rgba(255,29,110,0.1);
   }
   .tag-word{
     font-family:"Bricolage Grotesque",sans-serif;
-    font-size:clamp(15px,2vw,20px);
-    font-weight:400;
-    
-    color:var(--ink-3);
-    text-align:right;
+    font-size:clamp(14px,1.6vw,18px);
+    font-weight:600;
+    color:var(--ink);
+    text-align:center;
     display:block;
     letter-spacing:-0.01em;
     line-height:1.3;
     transition:color .15s;
     user-select:none;
+    white-space:nowrap;
   }
   .tag-item:hover .tag-word{
+    color:var(--pop-pink);
+  }
+  .tag-item.active .tag-word{
     color:var(--ink);
+    font-weight:700;
   }
 
   /* ── IDENTITY OVERLAY ── */
@@ -165,7 +196,7 @@
 
   @media (max-width:680px){
     header{grid-template-columns:1fr;gap:20px}
-    .tagline-stack{align-items:flex-start}
+    .tagline-carousel{justify-content:flex-start}
     .id-overlay{
       padding:28px 20px;
       align-items:flex-start;
@@ -1707,19 +1738,25 @@
         <h1>Avishek <em>Nayak</em></h1>
         <p class="header-sub">An underdog cyclist and a wannabe superhuman.</p>
       </div>
-      <div class="tagline-stack">
-        <div class="tag-item" data-id="cyclist">
-          <span class="tag-word">Indian Cyclist</span>
+      <div class="tagline-carousel">
+        <button class="tc-arrow" id="tc-prev" aria-label="Previous">←</button>
+        <div class="tc-viewport">
+          <div class="tc-track" id="tc-track">
+            <div class="tag-item active" data-id="cyclist">
+              <span class="tag-word">Indian Cyclist</span>
+            </div>
+            <div class="tag-item" data-id="triathlete">
+              <span class="tag-word">Triathlete</span>
+            </div>
+            <div class="tag-item" data-id="community">
+              <span class="tag-word">Community Builder</span>
+            </div>
+            <div class="tag-item" data-id="nutrition">
+              <span class="tag-word">Sports Nutrition</span>
+            </div>
+          </div>
         </div>
-        <div class="tag-item" data-id="triathlete">
-          <span class="tag-word">Triathlete</span>
-        </div>
-        <div class="tag-item" data-id="community">
-          <span class="tag-word">Community Builder</span>
-        </div>
-        <div class="tag-item" data-id="nutrition">
-          <span class="tag-word">Sports Nutrition</span>
-        </div>
+        <button class="tc-arrow" id="tc-next" aria-label="Next">→</button>
       </div>
     </header>
 
@@ -2141,21 +2178,39 @@
   const labelEl = document.getElementById('id-overlay-label');
   const titleEl = document.getElementById('id-overlay-title');
   const bodyEl  = document.getElementById('id-overlay-body');
+  const track   = document.getElementById('tc-track');
+  const prevBtn = document.getElementById('tc-prev');
+  const nextBtn = document.getElementById('tc-next');
+  const items   = [...document.querySelectorAll('.tag-item[data-id]')];
+
   let locked = false;
+  let cur = 0;
 
   function show(id){
     const c = content[id];
     if(!c) return;
-    labelEl.textContent = c.label;
+    labelEl.textContent = c.label || '';
     titleEl.textContent = c.title;
     bodyEl.innerHTML = c.body;
     overlay.classList.add('active');
   }
   function hide(){
     overlay.classList.remove('active');
+    locked = false;
   }
 
-  document.querySelectorAll('.tag-item[data-id]').forEach(item => {
+  // ── Carousel nav ──
+  function goTo(n){
+    cur = (n + items.length) % items.length;
+    track.style.transform = `translateX(-${cur * 190}px)`;
+    items.forEach((it,i) => it.classList.toggle('active', i === cur));
+    if(locked) show(items[cur].dataset.id);
+  }
+  prevBtn.addEventListener('click', e => { e.stopPropagation(); goTo(cur - 1); });
+  nextBtn.addEventListener('click', e => { e.stopPropagation(); goTo(cur + 1); });
+
+  // ── Hover / click ──
+  items.forEach((item, i) => {
     const id = item.dataset.id;
 
     item.addEventListener('mouseenter', () => {
@@ -2166,28 +2221,32 @@
       if(locked) return;
       hide();
     });
-
-    // click locks it open
-    item.addEventListener('click', (e) => {
+    item.addEventListener('click', e => {
       e.stopPropagation();
-      show(id);
-      locked = true;
+      if(locked && cur === i){
+        hide();               // clicking the same word again closes it
+      } else {
+        cur = i;
+        goTo(i);
+        show(id);
+        locked = true;
+      }
     });
   });
 
-  // click anywhere closes a locked overlay
-  document.addEventListener('click', () => {
-    if(locked){
-      locked = false;
-      hide();
-    }
+  // Clicking outside closes a locked overlay
+  document.addEventListener('click', e => {
+    if(!locked) return;
+    if(e.target.closest('.tagline-carousel')) return;
+    hide();
   });
-  document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape' && locked){
-      locked = false;
-      hide();
-    }
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') hide();
+    if(e.key === 'ArrowLeft')  goTo(cur - 1);
+    if(e.key === 'ArrowRight') goTo(cur + 1);
   });
+
+  goTo(0);
 })();
 
 </script>
