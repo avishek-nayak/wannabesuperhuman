@@ -3,11 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Wannabe Superhuman</title>
-<link rel="icon" type="image/png" href="favicon.png">
+<title>Avishek Nayak — Resume</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Outfit:wght@300;400;600;700;800&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#f5f0e4;
@@ -24,7 +23,7 @@
   html,body{background:var(--frame);color:var(--ink);font-family:"Bricolage Grotesque",sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
   body{
     min-height:100vh;
-    padding:48px 48px;
+    padding:48px 72px;
   }
   .page{
     max-width:none;
@@ -46,10 +45,10 @@
   }
   /* ── HERO SECTION CONTAINER ── */
   .hero-section{
-    width:calc(100% + 96px);
-    margin-left:-48px;
-    margin-right:-48px;
-    margin-top:-48px;
+    width:calc(100% + 144px);
+    margin-left:-72px;
+    margin-right:-72px;
+    margin-top:-72px;
     padding:48px 48px 20px;
     background-size:cover;
     background-position:center;
@@ -68,7 +67,27 @@
     font-weight:400;
   }
 
-  /* ── TAGLINE CAROUSEL ── */
+  .fifty-shades{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--pop-pink);
+    text-decoration:none;
+    cursor:pointer;
+    margin-top:10px;
+    display:block;
+    text-align:right;
+    transition:opacity .15s;
+  }
+  .fifty-shades:hover{ opacity:0.7; }
+
+  .header-sponsor-btn{
+    display:flex;
+    align-items:flex-end;
+    justify-content:flex-end;
+  }
   .tagline-carousel{
     display:flex;
     align-items:center;
@@ -80,7 +99,7 @@
     font-weight:700;
     width:30px;height:30px;
     flex-shrink:0;
-    display:flex;align-items:center;justify-content:center;
+    display:flex;align-items:center;justify-content:flex-start;
     border:0.5px solid var(--ink);
     background:transparent;
     color:var(--ink);
@@ -229,6 +248,7 @@
     gap:10px;
     margin-top:16px;
     margin-bottom:32px;
+    justify-content:flex-start;
   }
   .header-btns .story-btn{margin-bottom:0;min-width:0}
   .story-btn{
@@ -242,7 +262,7 @@
     font-weight:700;
     text-decoration:none;
     border:0.5px solid var(--ink);
-    box-shadow:3px 3px 0 var(--ink);
+    box-shadow:none;
     margin-bottom:10px;
     white-space:nowrap;
     transition:all .12s;
@@ -250,25 +270,31 @@
   .story-btn:hover{
     background:var(--pop-yellow);
     color:var(--ink);
-    transform:translate(-1px,-1px);
-    box-shadow:4px 4px 0 var(--ink);
+    
+    box-shadow:none;
   }
   .story-btn .arrow{display:inline-block;margin-left:4px;transition:transform .12s}
   .story-btn:hover .arrow{transform:translateX(3px)}
   h1{
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-weight:500;
+    font-family:"Outfit",sans-serif;
+    font-weight:700;
     font-size:clamp(44px, 7vw, 76px);
     line-height:0.92;
     letter-spacing:-0.025em;
-    
+    font-style:normal;
   }
   h1 em{
-    
+    font-style:normal;
     font-weight:400;
     color:var(--pop-pink);
     position:relative;
     display:inline-block;
+  }
+  #scramble-last{
+    font-family:"Noto Sans Devanagari","Outfit",sans-serif;
+    font-style:normal;
+    font-weight:700;
+    color:var(--pop-pink);
   }
   h1 em::after{
     content:"";
@@ -305,8 +331,8 @@
     padding:14px 18px;
     text-align:center;
     border:0.5px solid var(--ink);
-    transform:rotate(-2deg);
-    box-shadow:6px 6px 0 var(--pop-pink);
+    
+    box-shadow:none;
     font-family:"Bricolage Grotesque",sans-serif;
   }
   .bib-label{font-size:9px;letter-spacing:0.18em;color:var(--pop-yellow);margin-bottom:2px;font-weight:700}
@@ -340,7 +366,7 @@
   .contact a.mini-btn:hover{background:var(--pop-pink);color:var(--paper)}
   .contact .dot{color:var(--pop-pink);font-weight:700}
 
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;width:calc(100% + 144px);margin-left:-72px;margin-right:-72px;padding:0 72px;}
   @media (max-width:680px){
     body{padding:24px 14px}
     .grid{grid-template-columns:1fr;gap:28px}
@@ -351,17 +377,16 @@
   section{margin-bottom:30px}
   .sec-title{
     font-family:"Bricolage Grotesque",sans-serif;
-    font-size:10.5px;
-    letter-spacing:0.22em;
-    text-transform:uppercase;
+    font-size:22px;
+    letter-spacing:-0.01em;
+    text-transform:none;
     color:var(--ink);
     margin-bottom:14px;
     padding-bottom:6px;
-    
     display:flex;
     align-items:baseline;
     justify-content:space-between;
-    font-weight:700;
+    font-weight:800;
   }
   .sec-title .num{
     color:var(--paper);
@@ -381,7 +406,7 @@
     margin-bottom:34px;
     background:var(--pop-yellow);
     border:0.5px solid var(--ink);
-    box-shadow:8px 8px 0 var(--pop-pink);
+    box-shadow:none;
   }
 
   .entry{margin-bottom:20px}
@@ -434,7 +459,7 @@
     margin-bottom:16px;
     background:var(--ink);
     gap:2px;
-    box-shadow:5px 5px 0 var(--pop-pink);
+    box-shadow:none;
   }
   .stat{background:var(--paper);padding:12px 6px;text-align:center}
   .stat:nth-child(odd){background:var(--pop-yellow)}
@@ -529,15 +554,15 @@
     font-weight:700;
     cursor:pointer;
     font-family:"Bricolage Grotesque",sans-serif;
-    box-shadow:4px 4px 0 var(--pop-pink);
+    box-shadow:none;
     transition:all .12s;
     z-index:101;
   }
   .story-close:hover{
     background:var(--pop-pink);
     color:var(--paper);
-    transform:translate(-1px,-1px);
-    box-shadow:5px 5px 0 var(--ink);
+    
+    box-shadow:none;
   }
   .story-close:focus-visible{outline:3px solid var(--pop-yellow);outline-offset:2px}
 
@@ -634,7 +659,7 @@
   .story-callback{
     background:var(--pop-yellow);
     border:0.5px solid var(--ink);
-    box-shadow:10px 10px 0 var(--pop-pink);
+    box-shadow:none;
     padding:28px 26px;
     margin-top:48px;
   }
@@ -658,13 +683,46 @@
   }
 
   /* ── HERO IMAGE ── */
+  /* ── HERO LAYOUT ── */
+  .hero-layout{
+    display:grid;
+    grid-template-columns:60% 40%;
+    gap:24px;
+    align-items:stretch;
+  }
   .hero-img{
     width:100%;
     aspect-ratio:16 / 7;
     overflow:hidden;
-    border:0.5px solid var(--ink);
-    box-shadow:8px 8px 0 var(--pop-pink);
+    border:0.5px solid rgba(10,10,10,0.1);
+    box-shadow:none;
     margin-bottom:0;
+    border-radius:24px;
+  }
+  .hero-desc{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .hero-desc-inner{
+    flex:1;
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:14px;
+    line-height:1.7;
+    color:var(--ink);
+  }
+  .header-btns{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:16px;
+    margin-bottom:32px;
+    justify-content:flex-start;
+  }
+  @media (max-width:680px){
+    .hero-layout{grid-template-columns:1fr}
   }
   .hero-img img{
     width:100%;
@@ -680,7 +738,7 @@
     max-width:100%;
     width:100%;
     margin:0;
-    transform:rotate(-1deg);
+    
     background:var(--pop-yellow);
     border:none;
     box-shadow:
@@ -711,7 +769,7 @@
   }
   @media (max-width:680px){
     .sticky-note{
-      transform:rotate(-1deg);
+      
       padding:20px 22px 22px;
     }
     .sticky-note::before{width:90px;height:18px;top:-9px}
@@ -725,8 +783,8 @@
   }
   .bib-btn .bib-num{font-size:40px;line-height:0.9}
   .bib-btn:hover{
-    transform:rotate(-2deg) translate(-2px,-2px);
-    box-shadow:9px 9px 0 var(--pop-pink);
+    
+    box-shadow:none;
   }
   .bib-btn:focus-visible{outline:3px solid var(--pop-yellow);outline-offset:3px}
 
@@ -737,8 +795,8 @@
     border:0.5px solid var(--ink);
     padding:14px 16px;
     margin:8px 0 16px;
-    transform:rotate(-2.5deg);
-    box-shadow:5px 5px 0 var(--ink);
+    
+    box-shadow:none;
     position:relative;
   }
 
@@ -752,15 +810,15 @@
     color:var(--ink);
     border:0.5px solid var(--ink);
     padding:16px 18px;
-    transform:rotate(2deg);
-    box-shadow:5px 5px 0 var(--ink);
+    
+    box-shadow:none;
     max-width:220px;
     transition:transform .15s ease, box-shadow .15s ease, opacity .3s ease;
     cursor:default;
   }
   .floating-sticker:hover{
-    transform:rotate(0deg) translate(-2px,-2px);
-    box-shadow:8px 8px 0 var(--ink);
+    
+    box-shadow:none;
   }
   .floating-sticker .sticker-tag{
     font-family:"Bricolage Grotesque",sans-serif;
@@ -841,7 +899,7 @@
     border:0.5px solid var(--ink);
     background:var(--ink);
     gap:2px;
-    box-shadow:5px 5px 0 var(--pop-pink);
+    box-shadow:none;
   }
   .health-stat{background:var(--paper);padding:12px 6px;text-align:center}
   .health-stat:nth-child(even){background:var(--pop-yellow)}
@@ -915,13 +973,13 @@
     color:var(--paper);
     text-decoration:none;
     border:0.5px solid var(--ink);
-    box-shadow:6px 6px 0 var(--pop-pink);
+    box-shadow:none;
     transition:transform .12s ease, box-shadow .12s ease;
     font-family:"Bricolage Grotesque",sans-serif;
   }
   .hire-cta:hover{
-    transform:translate(-2px,-2px);
-    box-shadow:8px 8px 0 var(--pop-pink);
+    
+    box-shadow:none;
     background:var(--pop-pink);
   }
   .hire-cta-tag{
@@ -953,7 +1011,7 @@
   .kpi-list{
     border:0.5px solid var(--ink);
     background:var(--paper);
-    box-shadow:5px 5px 0 var(--pop-pink);
+    box-shadow:none;
     margin-bottom:16px;
   }
   .kpi{
@@ -995,7 +1053,7 @@
     position:relative;
     margin-bottom:18px;
     padding:10px 0;
-    box-shadow:5px 5px 0 var(--pop-pink);
+    box-shadow:none;
   }
   .marquee-track{
     display:inline-flex;
@@ -1036,24 +1094,30 @@
   /* ── RACES FULL WIDTH 2×3 ── */
   .races-fullwidth{
     margin-bottom:36px;
+    width:calc(100% + 144px);
+    margin-left:-72px;
+    margin-right:-72px;
+    padding:0 72px;
   }
   .kpi-grid-2x3{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:0.5px;
-    background:var(--ink);
-    border:0.5px solid var(--ink);
-    box-shadow:6px 6px 0 var(--pop-pink);
+    gap:12px;
+    background:transparent;
+    border:none;
   }
   .kpi-card{
     background:var(--paper);
+    border:0.5px solid rgba(10,10,10,0.12);
+    border-radius:12px;
     padding:24px 20px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
     text-align:center;
     gap:8px;
+    box-shadow:0 1px 4px rgba(0,0,0,0.05);
   }
   .kpi-card:nth-child(even){background:var(--pop-yellow)}
   .kpi-card .kpi-num{
@@ -1079,17 +1143,16 @@
     position:relative;
     display:inline-block;
     background:var(--frame);
-    border:none;
+    border:1.5px solid var(--ink);
     border-radius:16px;
     padding:22px 32px 24px;
     font-family:"Bricolage Grotesque",sans-serif;
-    
     font-size:20px;
     line-height:1.35;
     color:var(--ink);
     letter-spacing:-0.01em;
     max-width:560px;
-    box-shadow:5px 5px 0 var(--pop-yellow);
+    box-shadow:none;
     margin-bottom:28px;
     margin-right:20px;
   }
@@ -1154,11 +1217,11 @@
         transparent 1px,
         transparent 12px
       );
-    width:calc(100% + 96px);
-    margin-left:-48px;
-    margin-right:-48px;
+    width:calc(100% + 144px);
+    margin-left:-72px;
+    margin-right:-72px;
     margin-top:0;
-    margin-bottom:-48px;
+    margin-bottom:-72px;
     padding:56px 48px 64px;
   }
   .black-footer-inner{
@@ -1290,9 +1353,9 @@
 
   /* ── SPONSOR BANNER ── */
   .sponsor-banner{
-    width:calc(100% + 96px);
-    margin-left:-48px;
-    margin-right:-48px;
+    width:calc(100% + 144px);
+    margin-left:-72px;
+    margin-right:-72px;
     margin-top:56px;
     margin-bottom:56px;
     background:var(--pop-yellow);
@@ -1416,45 +1479,47 @@
   }
   .rc-table-wrap{
     overflow-x:auto;
-    border:0.5px solid var(--ink);
-    box-shadow:5px 5px 0 var(--ink);
   }
   .rc-table{
     width:100%;
-    border-collapse:collapse;
+    border-collapse:separate;
+    border-spacing:0;
     table-layout:fixed;
     font-family:"Bricolage Grotesque",sans-serif;
     font-size:13.5px;
   }
-  .rc-table th:nth-child(1),.rc-table td:nth-child(1){width:26%}
-  .rc-table th:nth-child(2),.rc-table td:nth-child(2){width:11%}
-  .rc-table th:nth-child(3),.rc-table td:nth-child(3){width:15%}
-  .rc-table th:nth-child(4),.rc-table td:nth-child(4){width:18%}
-  .rc-table th:nth-child(5),.rc-table td:nth-child(5){width:14%}
-  .rc-table th:nth-child(6),.rc-table td:nth-child(6){width:16%}
-  .rc-table thead{
-    background:var(--ink);
-    color:var(--paper);
-  }
+  .rc-table th:nth-child(1),.rc-table td:nth-child(1){width:25%}
+  .rc-table th:nth-child(n+2),.rc-table td:nth-child(n+2){width:15%}
+  .rc-table thead tr{background:transparent;}
   .rc-table th{
-    padding:13px 16px;
+    padding:8px 16px;
     text-align:left;
     font-size:10px;
     letter-spacing:0.18em;
     text-transform:uppercase;
     font-weight:700;
     white-space:nowrap;
+    color:var(--pop-pink);
+    border-bottom:0.5px solid rgba(10,10,10,0.1);
+    padding-bottom:12px;
   }
   .rc-table td{
     padding:14px 16px;
     color:var(--ink);
-    border-bottom:0.5px solid rgba(10,10,10,0.1);
+    border-bottom:0.5px solid rgba(10,10,10,0.07);
     vertical-align:middle;
+    background:transparent;
+  }
+  .rc-table td:first-child{border-radius:0}
+  .rc-table td:last-child{border-radius:0}
+  .rc-table tbody tr{
+    box-shadow:none;
+    border-radius:0;
   }
   .rc-table tr:last-child td{border-bottom:none}
-  .rc-table tbody tr:nth-child(even){background:var(--frame)}
-  .rc-table tbody tr:hover{background:var(--pop-yellow)}
-  .rc-event-name{font-weight:700;font-size:14px}
+  .rc-table tbody tr:nth-child(even) td{background:transparent}
+  .rc-table tbody tr:hover td{background:rgba(255,29,110,0.04)}
+  .rc-event-name{font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;max-width:160px;}
   .rc-kms{
     font-weight:700;
     color:var(--pop-pink);
@@ -1475,32 +1540,37 @@
   }
   .rc-btn{
     font-family:"Bricolage Grotesque",sans-serif;
-    font-size:11px;
+    font-size:16px;
     font-weight:700;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    padding:7px 14px;
-    border:0.5px solid var(--ink);
+    padding:4px 8px;
+    border:none;
     background:transparent;
     color:var(--ink);
     cursor:pointer;
     white-space:nowrap;
-    transition:background .15s, color .15s;
+    display:block;
+    margin-left:auto;
+    transition:color .15s, transform .15s;
   }
-  .rc-btn:hover{background:var(--ink);color:var(--paper)}
+  .rc-btn:hover{
+    color:var(--pop-pink);
+    transform:translateX(3px);
+    background:transparent;
+  }
+
   .rc-pagination{
     display:flex;
     align-items:center;
     gap:6px;
     margin-top:16px;
-    justify-content:flex-end;
+    justify-content:flex-start;
   }
   .rc-page-btn{
     font-family:"Bricolage Grotesque",sans-serif;
     font-size:11px;
     font-weight:700;
     width:32px;height:32px;
-    display:flex;align-items:center;justify-content:center;
+    display:flex;align-items:center;justify-content:flex-start;
     border:0.5px solid var(--ink);
     background:transparent;
     color:var(--ink);
@@ -1520,7 +1590,7 @@
     z-index:300;
     display:flex;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
     padding:24px;
     opacity:0;
     visibility:hidden;
@@ -1530,7 +1600,7 @@
   .rc-modal-box{
     background:var(--paper);
     border:0.5px solid var(--ink);
-    box-shadow:8px 8px 0 var(--ink);
+    box-shadow:0 8px 32px rgba(0,0,0,0.12);
     max-width:700px;
     width:100%;
     max-height:90vh;
@@ -1567,7 +1637,7 @@
   .rc-m-img{
     position:absolute;
     inset:0;
-    display:flex;align-items:center;justify-content:center;
+    display:flex;align-items:center;justify-content:flex-start;
     opacity:0;
     transition:opacity .5s ease;
   }
@@ -1605,7 +1675,7 @@
     font-family:"Bricolage Grotesque",sans-serif;
     font-size:10px;
     font-weight:700;
-    display:flex;align-items:center;justify-content:center;
+    display:flex;align-items:center;justify-content:flex-start;
     cursor:pointer;
     transition:background .2s, color .2s;
   }
@@ -1627,7 +1697,7 @@
     font-family:"Bricolage Grotesque",sans-serif;
     font-weight:700;
     cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
+    display:flex;align-items:center;justify-content:flex-start;
     transition:background .15s;
   }
   .rc-m-arrow:hover{background:rgba(0,0,0,0.85)}
@@ -1667,6 +1737,96 @@
   }
   @media (max-width:560px){
     .rc-m-imgs{grid-template-columns:1fr}
+  }
+
+  /* ── GEAR LAYOUT ── */
+  .gear-layout{
+    display:grid;
+    grid-template-columns:40% 60%;
+    gap:24px;
+    align-items:start;
+  }
+  .gear-photo-frame{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:12px;
+    overflow:hidden;
+    background:var(--frame);
+  }
+  .gear-slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity .6s ease;
+    display:flex;align-items:center;justify-content:flex-start;
+  }
+  .gear-slide::after{
+    content:"No photo";
+    position:absolute;
+    font-size:10px;
+    color:var(--ink-3);
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+  }
+  .gear-slide img{
+    width:100%;height:100%;
+    object-fit:cover;
+    position:relative;z-index:1;
+  }
+  .gear-slide.active{opacity:1}
+  .gear-counter{
+    position:absolute;
+    bottom:12px;right:12px;
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:11px;
+    font-weight:700;
+    color:var(--paper);
+    background:rgba(10,10,10,0.5);
+    padding:3px 10px;
+    border-radius:20px;
+    z-index:2;
+    letter-spacing:0.05em;
+  }
+  .gear-list-col{
+    display:flex;
+    flex-direction:column;
+  }
+  .gear-group-label{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:9.5px;
+    font-weight:700;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--pop-pink);
+    margin-bottom:6px;
+  }
+  .gear-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 0;
+    border-bottom:0.5px solid rgba(10,10,10,0.08);
+    cursor:pointer;
+    transition:background .15s;
+    border-radius:4px;
+    padding-left:8px;
+    padding-right:8px;
+  }
+  .gear-row.active{
+    background:var(--pop-yellow);
+  }
+  .gear-row:hover{background:rgba(255,29,110,0.05)}
+  .gear-name{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .gear-meta{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-size:11px;
+    color:var(--ink-3);
+    text-align:right;
   }
 
   /* ── BIKE TABS ── */
@@ -1713,9 +1873,9 @@
     display:none!important;
   }
   .bike-card{
-    border:0.5px solid var(--ink);
+    border:0.5px solid rgba(10,10,10,0.12);
     overflow:hidden;
-    box-shadow:3px 3px 0 var(--ink);
+    box-shadow:0 1px 4px rgba(0,0,0,0.06);
     flex:0 0 180px;
     scroll-snap-align:start;
   }
@@ -1726,7 +1886,7 @@
     overflow:hidden;
     display:flex;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
     position:relative;
   }
   .bike-card-photo::after{
@@ -1761,6 +1921,119 @@
     padding:0 12px 10px;
   }
 
+  /* ══════════════════════════════
+     MOBILE RESPONSIVE — max 768px
+  ══════════════════════════════ */
+  @media (max-width:768px){
+
+    /* Body */
+    body{ padding:24px 20px; }
+
+    /* Full-bleed sections — recalculate bleed for 20px body padding */
+    .hero-section,
+    .races-fullwidth,
+    .grid,
+    .sponsor-banner,
+    .black-footer{
+      width:calc(100% + 40px);
+      margin-left:-20px;
+      margin-right:-20px;
+      padding-left:20px;
+      padding-right:20px;
+    }
+    .black-footer{ margin-bottom:-24px; }
+    .hero-section{ margin-top:-24px; padding-top:24px; padding-bottom:16px; }
+
+    /* Header */
+    header{
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+    h1{ font-size:clamp(36px,10vw,56px); }
+
+    /* Tagline carousel */
+    .tagline-carousel{ justify-content:flex-start; }
+    .tc-viewport{ width:160px; }
+    .tag-item{ flex:0 0 160px; }
+
+    /* Hero layout */
+    .hero-layout{
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+    .hero-img{ aspect-ratio:16/9; border-radius:16px; }
+    .hero-desc{ gap:12px; }
+
+    /* Grid — gear + passion */
+    .grid{
+      grid-template-columns:1fr;
+      gap:28px;
+    }
+
+    /* KPI grid */
+    .kpi-grid-2x3{
+      grid-template-columns:repeat(2,1fr);
+    }
+
+    /* Race calendar */
+    .race-calendar{ margin-top:32px; margin-bottom:32px; }
+    .rc-table-wrap{ overflow-x:auto; }
+    .rc-table{ font-size:12px; }
+    .rc-table th,.rc-table td{ padding:10px 10px; }
+
+    /* Sponsor banner */
+    .sponsor-banner{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:20px;
+      padding-top:32px;
+      padding-bottom:32px;
+      min-height:0;
+    }
+    .sponsor-banner-head{ font-size:clamp(28px,8vw,48px); }
+    .sponsor-marquee{ width:100%; height:100px; }
+    .sponsor-marquee-track{ align-items:flex-start; }
+    .sm-item{ text-align:left; font-size:14px; }
+
+    /* Footer */
+    .black-footer{ padding:32px 20px 36px; }
+    .black-footer-inner{ flex-direction:column; align-items:flex-start; gap:28px; }
+    .sponsor-text{ font-size:clamp(24px,7vw,40px); }
+    .counter-num{ font-size:clamp(22px,6vw,36px); }
+    .footer-ctas{ flex-direction:column; gap:8px; }
+    .footer-cta-btn{ text-align:center; }
+    .sponsor-contacts{ flex-direction:column; gap:6px; }
+
+    /* Identity overlay */
+    .id-overlay{ padding:24px 20px; align-items:flex-start; padding-top:48px; }
+    .id-overlay-title{ font-size:clamp(28px,8vw,48px); }
+    .id-overlay-body{ font-size:13px; }
+
+    /* Think bubble */
+    .think-bubble{ font-size:15px; padding:16px 20px; margin-right:0; max-width:100%; }
+    .think-bubble-wrap{ justify-content:center; margin-bottom:-28px; }
+
+    /* Floating sticker */
+    .floating-sticker{ bottom:16px; right:16px; max-width:180px; padding:12px 14px; }
+
+    /* Modal */
+    .rc-modal{ padding:12px; }
+    .rc-modal-box{ max-height:95vh; }
+    .rc-m-title{ font-size:16px; padding:16px 16px 10px; }
+    .rc-m-body{ padding:14px 16px 20px; }
+
+    /* Gear photo */
+    .gear-photo-frame{ aspect-ratio:4/3; }
+
+    /* Sections */
+    section{ margin-bottom:20px; }
+    .sec-title{ font-size:18px; }
+
+    /* Story overlay */
+    .story-overlay{ padding:24px 20px; }
+    .story-hook{ font-size:clamp(28px,8vw,44px); }
+  }
+
   @media print{
     .story-overlay{display:none}
     body{padding:0;background:#fff}
@@ -1782,34 +2055,26 @@
 
     <header>
       <div class="header-left">
-        <h1>Avishek <em>Nayak</em></h1>
+        <h1 id="scramble-name"><span id="scramble-first">Avishek</span> <span id="scramble-last">नायक</span></h1>
         <p class="header-sub">An underdog cyclist and a wannabe superhuman.</p>
       </div>
-      <div class="tagline-carousel">
-        <button class="tc-arrow" id="tc-prev" aria-label="Previous">←</button>
-        <div class="tc-viewport">
-          <div class="tc-track" id="tc-track">
-            <div class="tag-item active" data-id="cyclist">
-              <span class="tag-word">Indian Cyclist</span>
-            </div>
-            <div class="tag-item" data-id="triathlete">
-              <span class="tag-word">Triathlete</span>
-            </div>
-            <div class="tag-item" data-id="community">
-              <span class="tag-word">Community Builder</span>
-            </div>
-            <div class="tag-item" data-id="nutrition">
-              <span class="tag-word">Sports Nutrition</span>
-            </div>
-          </div>
-        </div>
-        <button class="tc-arrow" id="tc-next" aria-label="Next">→</button>
+      <div class="header-sponsor-btn">
+        <a class="story-btn" href="https://forms.gle/XXXXXXXXXXXXXX" target="_blank" rel="noopener">Sponsor me →</a>
       </div>
     </header>
 
     <!-- ═══ HERO IMAGE ═══ -->
-    <div class="hero-img">
-      <img src="photo.jpeg" alt="Avishek Nayak riding his dream bike">
+    <div class="hero-layout">
+      <div class="hero-img">
+        <img src="photo.jpeg" alt="Avishek Nayak riding his dream bike">
+      </div>
+
+      <div class="hero-desc">
+        <div class="hero-desc-inner">
+          <!-- Add your description here -->
+          <p>Add your description here.</p>
+        </div>
+      </div>
     </div>
 
     <div class="header-btns">
@@ -1838,72 +2103,19 @@
 
       <section>
         <h2 class="sec-title"><span>Gear</span></h2>
-        <div class="bike-tabs">
-          <div class="bike-tab-btns">
-            <button class="bike-tab-btn active" data-tab="current">Currently Using</button>
-            <button class="bike-tab-btn" data-tab="retired">Retired</button>
-          </div>
-
-          <div class="bike-tab-panel active" id="tab-current">
-            <div class="bike-card">
-              <div class="bike-card-photo"><img src="merida-4000.png" alt="Merida Reacto 4000" onerror="this.style.display='none'"></div>
-              <div class="bike-card-name">Merida Reacto 4000</div>
-              <div class="bike-card-date">2026 – Present</div>
-            </div>
-            <div class="bike-card">
-              <div class="bike-card-photo"><img src="shimano-rx6.jpg" alt="Cycling Shoes" onerror="this.style.display='none'"></div>
-              <div class="bike-card-name">Shimano RX6</div>
-              <div class="bike-card-date">2023 – Present</div>
-            </div>
-            <div class="bike-card">
-              <div class="bike-card-photo"><img src="bell-helmet.jpg" alt="Helmet" onerror="this.style.display='none'"></div>
-              <div class="bike-card-name">MTB Helmet</div>
-              <div class="bike-card-date">2023 – Present</div>
-            </div>
-            <div class="bike-card">
-              <div class="bike-card-photo"><img src="gear-computer.jpg" alt="Bike Computer" onerror="this.style.display='none'"></div>
-              <div class="bike-card-name">Bike Computer</div>
-              <div class="bike-card-date">2024 – Present</div>
-            </div>
-            <div class="bike-card">
-              <div class="bike-card-photo"><img src="kit.png" alt="Gear Kit" onerror="this.style.display='none'"></div>
-              <div class="bike-card-name">Race Kit</div>
-              <div class="bike-card-date">2024 – Present</div>
-            </div>
-            <div class="bike-card">
-              <div class="bike-card-photo"><img src="garmin.webp" alt="garmin" onerror="this.style.display='none'"></div>
-              <div class="bike-card-name">Garmin Instinct Solar</div>
-              <div class="bike-card-date">2022 – Present</div>
-            </div>
-          </div>
-
-          <div class="bike-tab-panel" id="tab-retired">
-            <div class="bike-card">
-              <div class="bike-card-photo"><img src="bergamont.jpg" alt="Bergamont Hybrid" onerror="this.style.display='none'"></div>
-              <div class="bike-card-name">Bergamont Hybrid</div>
-              <div class="bike-card-date">2023 – Present</div>
-            </div>
-            <div class="bike-card">
-              <div class="bike-card-photo"><img src="jogflow.jpg" alt="Jogflow" onerror="this.style.display='none'"></div>
-              <div class="bike-card-name">Jog Flow</div>
-              <div class="bike-card-date">2023 - 2024</div>
-            </div>
-            <div class="bike-card">
-              <div class="bike-card-photo"><img src="schnell.jpg" alt="Schnell" onerror="this.style.display='none'"></div>
-              <div class="bike-card-name">Schnell MTB</div>
-              <div class="bike-card-date">2021 – Present</div>
-            </div>
-            <div class="bike-card">
-              <div class="bike-card-photo"><img src="oldhelmet.jpg" alt="Old Helmet" onerror="this.style.display='none'"></div>
-              <div class="bike-card-name">The 250 helmet</div>
-              <div class="bike-card-date">2021 – 2023</div>
-            </div>
-            <div class="bike-card">
-              <div class="bike-card-photo"><img src="gear-oldkit.jpg" alt="Old Kit" onerror="this.style.display='none'"></div>
-              <div class="bike-card-name">Starter Jersey</div>
-              <div class="bike-card-date">2019 – 2024</div>
-            </div>
-          </div>
+        <div class="gear-photo-frame" id="gear-photo-frame">
+          <div class="gear-slide active"><img src="gear-merida.jpg" alt="Merida Reacto 4000" onerror="this.style.display='none'"></div>
+          <div class="gear-slide"><img src="gear-shoes.jpg" alt="Shimano RC300" onerror="this.style.display='none'"></div>
+          <div class="gear-slide"><img src="gear-helmet.jpg" alt="Aero Helmet" onerror="this.style.display='none'"></div>
+          <div class="gear-slide"><img src="gear-computer.jpg" alt="Bike Computer" onerror="this.style.display='none'"></div>
+          <div class="gear-slide"><img src="gear-kit.jpg" alt="Race Kit" onerror="this.style.display='none'"></div>
+          <div class="gear-slide"><img src="gear-bottles.jpg" alt="Hydration Setup" onerror="this.style.display='none'"></div>
+          <div class="gear-slide"><img src="gear-bergamont.jpg" alt="Bergamont Hybrid" onerror="this.style.display='none'"></div>
+          <div class="gear-slide"><img src="gear-mtb.jpg" alt="Entry MTB" onerror="this.style.display='none'"></div>
+          <div class="gear-slide"><img src="gear-oldshoes.jpg" alt="First Clipless Shoes" onerror="this.style.display='none'"></div>
+          <div class="gear-slide"><img src="gear-oldhelmet.jpg" alt="First Helmet" onerror="this.style.display='none'"></div>
+          <div class="gear-slide"><img src="gear-oldkit.jpg" alt="Starter Jersey" onerror="this.style.display='none'"></div>
+          <div class="gear-counter" id="gear-counter">1 / 11</div>
         </div>
       </section>
 
@@ -1980,17 +2192,16 @@
           <tr>
             <th>Event Name</th>
             <th>Race KMs</th>
+            <th>Elevation</th>
             <th>Date</th>
             <th>Location</th>
             <th>Position</th>
-            <th></th>
           </tr>
         </thead>
         <tbody id="rc-tbody"></tbody>
       </table>
     </div>
 
-    <div class="rc-pagination" id="rc-pagination"></div>
   </section>
 
   <footer>
@@ -2342,6 +2553,16 @@
     if(e.key === 'ArrowRight') goTo(cur + 1);
   });
 
+  const fiftyLink = document.getElementById('fifty-shades-link');
+  if(fiftyLink){
+    fiftyLink.addEventListener('click', e => {
+      e.stopPropagation();
+      goTo(cur + 1);
+      show(items[cur].dataset.id);
+      locked = true;
+    });
+  }
+
   goTo(0);
 })();
 
@@ -2407,6 +2628,85 @@
   }, { threshold: 0.1 });
   obs.observe(footer);
 })();
+
+// Scramble name on load + hover
+(function(){
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const first = document.getElementById('scramble-first');
+  const last  = document.getElementById('scramble-last');
+  if(!first || !last) return;
+
+  function scramble(el, original, duration){
+    const len = original.length;
+    let frame = 0;
+    const totalFrames = Math.round(duration / 40);
+    const revealAt = Math.floor(totalFrames * 0.5);
+
+    const timer = setInterval(() => {
+      let out = '';
+      for(let i = 0; i < len; i++){
+        if(original[i] === ' '){ out += ' '; continue; }
+        const revealed = frame > revealAt + i * 1.5;
+        out += revealed ? original[i] : chars[Math.floor(Math.random() * chars.length)];
+      }
+      el.textContent = out;
+      frame++;
+      if(frame > totalFrames + len * 2){
+        clearInterval(timer);
+        el.textContent = original;
+      }
+    }, 40);
+  }
+
+  function runScramble(){
+    scramble(first, 'Avishek', 900);
+    setTimeout(() => scramble(last, 'नायक', 800), 200);
+  }
+
+  // On load
+  setTimeout(runScramble, 300);
+
+  // On hover
+  const h1 = document.getElementById('scramble-name');
+  h1.style.cursor = 'default';
+  let running = false;
+  h1.addEventListener('mouseenter', () => {
+    if(running) return;
+    running = true;
+    runScramble();
+    setTimeout(() => running = false, 1400);
+  });
+})();
+
+// Gear carousel
+(function(){
+  const slides  = [...document.querySelectorAll('.gear-slide')];
+  const rows    = [...document.querySelectorAll('.gear-row')];
+  const counter = document.getElementById('gear-counter');
+  if(!slides.length) return;
+  let cur = 0;
+  let timer;
+
+  function goTo(n){
+    slides[cur].classList.remove('active');
+    rows[cur] && rows[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    rows[cur] && rows[cur].classList.add('active');
+    if(counter) counter.textContent = `${cur+1} / ${slides.length}`;
+    rows[cur] && rows[cur].scrollIntoView({block:'nearest', behavior:'smooth'});
+  }
+
+  function startTimer(){ timer = setInterval(() => goTo(cur+1), 5000); }
+  function resetTimer(){ clearInterval(timer); startTimer(); }
+
+  rows.forEach((row, i) => {
+    row.addEventListener('click', () => { goTo(i); resetTimer(); });
+  });
+
+  startTimer();
+})();
+
 document.querySelectorAll('.bike-tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const tab = btn.dataset.tab;
@@ -2420,125 +2720,33 @@ document.querySelectorAll('.bike-tab-btn').forEach(btn => {
 // Race Calendar
 (function(){
   const races = [
-    { name:"Pune → Mahabaleshwar",    kms:"190",  date:"Aug 22, 2026", location:"Pune, MH",      position:"Upcoming", completedIn:"—", desc:"190km climb across Tamhini and Ambenali Ghats. My biggest ride yet. Still training for it.", imgs:["race1a.jpg","race1b.jpg","race1c.jpg"] },
-    { name:"BRM 200 Baroda",          kms:"200",  date:"Mar 10, 2025", location:"Vadodara, GJ",  position:"Finisher", completedIn:"9h 42m", desc:"My second BRM. Night start, solo most of the route. Learned to pace on flats.", imgs:["race2a.jpg","race2b.jpg","race2c.jpg"] },
-    { name:"BRM 300 Ahmedabad",       kms:"300",  date:"Dec 08, 2024", location:"Ahmedabad, GJ", position:"Finisher", completedIn:"14h 18m", desc:"Toughest ride so far. Finished just before cutoff. Nutrition was the game changer.", imgs:["race3a.jpg","race3b.jpg","race3c.jpg"] },
-    { name:"ITT Race Vadodara",       kms:"40",   date:"Oct 15, 2024", location:"Vadodara, GJ",  position:"1st", completedIn:"1h 04m", desc:"First podium. Time trial format — just me, the road, and a clock. Won it.", imgs:["race4a.jpg","race4b.jpg","race4c.jpg"] },
-    { name:"BRM 100 Baroda",          kms:"100",  date:"Aug 04, 2024", location:"Vadodara, GJ",  position:"Finisher", completedIn:"4h 51m", desc:"First BRM. Rode with the Cycle & Chai group. Hot day, strong legs.", imgs:["race5a.jpg","race5b.jpg","race5c.jpg"] },
-    { name:"Mumbai Marathon",         kms:"42.2", date:"Jan 19, 2025", location:"Mumbai, MH",    position:"Finisher", completedIn:"4h 33m", desc:"First full marathon. Trained 12 weeks. Cramped at 38km. Still finished.", imgs:["race6a.jpg","race6b.jpg","race6c.jpg"] },
-    { name:"Ahmedabad Half Marathon", kms:"21.1", date:"Nov 17, 2024", location:"Ahmedabad, GJ", position:"Finisher", completedIn:"2h 07m", desc:"One of 9 half marathons. Paced well, negative split in the second half.", imgs:["race7a.jpg","race7b.jpg","race7c.jpg"] },
-    { name:"Cyclothon Baroda 50K",    kms:"50",   date:"Feb 23, 2025", location:"Vadodara, GJ",  position:"Top 10", completedIn:"2h 12m", desc:"Fast group ride. Stayed in the peloton till the final 5km, then pushed hard.", imgs:["race8a.jpg","race8b.jpg","race8c.jpg"] },
-    { name:"Ironman Goa",             kms:"—",    date:"Nov 2027",     location:"Goa",           position:"Upcoming", completedIn:"—", desc:"The big one. 3.8km swim · 180km bike · 42.2km run. Everything I'm building toward.", imgs:["race9a.jpg","race9b.jpg","race9c.jpg"] },
-    { name:"Surat Cycling Criterium", kms:"60",   date:"Sep 14, 2024", location:"Surat, GJ",     position:"Finisher", completedIn:"2h 28m", desc:"Criterium format. Multiple laps, fast pack. First time racing in a bunch sprint.", imgs:["race10a.jpg","race10b.jpg","race10c.jpg"] },
+    { name:"Pune → Mahabaleshwar",    kms:"190",  elev:"3,200m", date:"Aug 22, 2026", location:"Pune, MH",      position:"Upcoming", completedIn:"—", desc:"190km climb across Tamhini and Ambenali Ghats. My biggest ride yet. Still training for it.", imgs:["race1a.jpg","race1b.jpg","race1c.jpg"] },
+    { name:"BRM 200 Baroda",          kms:"200",  elev:"1,100m", date:"Mar 10, 2025", location:"Vadodara, GJ",  position:"Finisher", completedIn:"9h 42m", desc:"My second BRM. Night start, solo most of the route. Learned to pace on flats.", imgs:["race2a.jpg","race2b.jpg","race2c.jpg"] },
+    { name:"BRM 300 Ahmedabad",       kms:"300",  elev:"1,800m", date:"Dec 08, 2024", location:"Ahmedabad, GJ", position:"Finisher", completedIn:"14h 18m", desc:"Toughest ride so far. Finished just before cutoff. Nutrition was the game changer.", imgs:["race3a.jpg","race3b.jpg","race3c.jpg"] },
+    { name:"ITT Race Vadodara",       kms:"40",   elev:"280m",   date:"Oct 15, 2024", location:"Vadodara, GJ",  position:"1st", completedIn:"1h 04m", desc:"First podium. Time trial format — just me, the road, and a clock. Won it.", imgs:["race4a.jpg","race4b.jpg","race4c.jpg"] },
+    { name:"BRM 100 Baroda",          kms:"100",  elev:"620m",   date:"Aug 04, 2024", location:"Vadodara, GJ",  position:"Finisher", completedIn:"4h 51m", desc:"First BRM. Rode with the Cycle & Chai group. Hot day, strong legs.", imgs:["race5a.jpg","race5b.jpg","race5c.jpg"] },
+    { name:"Mumbai Marathon",         kms:"42.2", elev:"180m",   date:"Jan 19, 2025", location:"Mumbai, MH",    position:"Finisher", completedIn:"4h 33m", desc:"First full marathon. Trained 12 weeks. Cramped at 38km. Still finished.", imgs:["race6a.jpg","race6b.jpg","race6c.jpg"] },
+    { name:"Ahmedabad Half Marathon", kms:"21.1", elev:"90m",    date:"Nov 17, 2024", location:"Ahmedabad, GJ", position:"Finisher", completedIn:"2h 07m", desc:"One of 9 half marathons. Paced well, negative split in the second half.", imgs:["race7a.jpg","race7b.jpg","race7c.jpg"] },
+    { name:"Cyclothon Baroda 50K",    kms:"50",   elev:"340m",   date:"Feb 23, 2025", location:"Vadodara, GJ",  position:"Top 10", completedIn:"2h 12m", desc:"Fast group ride. Stayed in the peloton till the final 5km, then pushed hard.", imgs:["race8a.jpg","race8b.jpg","race8c.jpg"] },
+    { name:"Ironman Goa",             kms:"—",    elev:"—",      date:"Nov 2027",     location:"Goa",           position:"Upcoming", completedIn:"—", desc:"The big one. 3.8km swim · 180km bike · 42.2km run. Everything I'm building toward.", imgs:["race9a.jpg","race9b.jpg","race9c.jpg"] },
+    { name:"Surat Cycling Criterium", kms:"60",   elev:"210m",   date:"Sep 14, 2024", location:"Surat, GJ",     position:"Finisher", completedIn:"2h 28m", desc:"Criterium format. Multiple laps, fast pack. First time racing in a bunch sprint.", imgs:["race10a.jpg","race10b.jpg","race10c.jpg"] },
   ];
 
-  const PER_PAGE = 5;
-  let page = 1;
   const tbody = document.getElementById('rc-tbody');
-  const pag   = document.getElementById('rc-pagination');
-  const total = Math.ceil(races.length / PER_PAGE);
-
-  // Modal
-  const modal     = document.getElementById('rc-modal');
-  const modalClose= document.getElementById('rc-modal-close');
-  const mTitle    = document.getElementById('rc-m-title');
-  const mImgs     = document.getElementById('rc-m-imgs');
-  const mDesc     = document.getElementById('rc-m-desc');
-  const mCompleted= document.getElementById('rc-m-completed');
-
-  let carouselTimer = null;
-
-  function openModal(r){
-    mTitle.textContent = r.name;
-    mDesc.textContent  = r.desc;
-    mCompleted.textContent = r.completedIn;
-
-    const dotsEl = document.getElementById('rc-m-dots');
-    const prevBtn = document.getElementById('rc-m-prev');
-    const nextBtn = document.getElementById('rc-m-next');
-
-    [...mImgs.children].forEach(c => {
-      if(!c.classList.contains('rc-m-dots') && !c.classList.contains('rc-m-arrow')) c.remove();
-    });
-    dotsEl.innerHTML = '';
-
-    r.imgs.forEach((src, i) => {
-      const slide = document.createElement('div');
-      slide.className = 'rc-m-img' + (i===0?' active':'');
-      slide.innerHTML = `<img src="${src}" alt="${r.name}" onerror="this.style.display='none'">`;
-      mImgs.insertBefore(slide, prevBtn);
-
-      const dot = document.createElement('div');
-      dot.className = 'rc-m-dot' + (i===0?' active':'');
-      dot.textContent = i + 1;
-      dot.addEventListener('click', () => goTo(i));
-      dotsEl.appendChild(dot);
-    });
-
-    const slides = mImgs.querySelectorAll('.rc-m-img');
-    const dots   = dotsEl.querySelectorAll('.rc-m-dot');
-    let cur = 0;
-
-    function goTo(n){
-      slides[cur].classList.remove('active');
-      dots[cur].classList.remove('active');
-      cur = (n + slides.length) % slides.length;
-      slides[cur].classList.add('active');
-      dots[cur].classList.add('active');
-      clearInterval(carouselTimer);
-      carouselTimer = setInterval(() => goTo(cur + 1), 3000);
-    }
-
-    prevBtn.onclick = () => goTo(cur - 1);
-    nextBtn.onclick = () => goTo(cur + 1);
-
-    clearInterval(carouselTimer);
-    carouselTimer = setInterval(() => goTo(cur + 1), 3000);
-
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal(){
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-    clearInterval(carouselTimer);
-  }
-  modalClose.addEventListener('click', closeModal);
-  modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
-  document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
 
   function isPending(pos){ return pos === 'Upcoming' || pos === '—'; }
 
-  function render(){
-    const start = (page-1)*PER_PAGE;
-    const slice = races.slice(start, start+PER_PAGE);
-    tbody.innerHTML = slice.map((r,i) => `
-      <tr>
-        <td><div class="rc-event-name">${r.name}</div></td>
-        <td><span class="rc-kms">${r.kms} km</span></td>
-        <td>${r.date}</td>
-        <td>${r.location}</td>
-        <td><span class="rc-position${isPending(r.position)?' pending':''}">${r.position}</span></td>
-        <td><button class="rc-btn" data-idx="${start+i}">View Details →</button></td>
-      </tr>`).join('');
+  tbody.innerHTML = races.map((r,i) => `
+    <tr>
+      <td><div class="rc-event-name" title="${r.name}">${r.name}</div></td>
+      <td><span class="rc-kms">${r.kms} km</span></td>
+      <td>${r.elev}</td>
+      <td>${r.date}</td>
+      <td>${r.location}</td>
+      <td><span class="rc-position${isPending(r.position)?' pending':''}">${r.position}</span></td>
+    </tr>`).join('');
 
-    tbody.querySelectorAll('.rc-btn').forEach(btn => {
-      btn.addEventListener('click', () => openModal(races[+btn.dataset.idx]));
-    });
-
-    pag.innerHTML = '';
-    for(let i=1;i<=total;i++){
-      const btn = document.createElement('button');
-      btn.className = 'rc-page-btn' + (i===page?' active':'');
-      btn.textContent = i;
-      btn.addEventListener('click',()=>{ page=i; render(); });
-      pag.appendChild(btn);
-    }
-  }
-
-  render();
 })();
-</script>
 </script>
 
 <script>
